@@ -9,12 +9,12 @@
 		</form>
 
 		<!-- 設定（親） -->
-		<div id="settingToggle" class="side-item setting-parent" style="cursor: pointer;">
+		<div id="settingToggle" class="side-item setting-parent">
 			<i class="fas fa-cog"></i> <span>設定</span>
 		</div>
 
 		<!-- 設定サブカテゴリ -->
-		<div id="settingSub" class="setting-sub">
+		<div id="settingSub" class="setting-sub open">
 			<button type="button" class="side-item sub-item" onclick="openFixedModal()">
 				<i class="fas fa-house"></i> <span>固定費の設定</span>
 			</button>
@@ -27,12 +27,12 @@
 		</div>
 
 		<!-- 総資産確認（親） -->
-		<div id="assetToggle" class="side-item setting-parent" style="cursor: pointer;">
+		<div id="assetToggle" class="side-item setting-parent">
 			<i class="fas fa-chart-line"></i> <span>総資産確認</span>
 		</div>
 
 		<!-- 総資産サブカテゴリ（formをdivの外に出す） -->
-		<div id="assetSub" class="setting-sub">
+		<div id="assetSub" class="setting-sub open">
 			<form action="/Kakeibo/UserFC" method="post">
 				<button type="submit" class="side-item sub-item" name="buttonId" value="e021">
 					<i class="fas fa-wallet"></i><span>総資産</span>
@@ -51,7 +51,7 @@
 
 		<!-- ログアウト -->
 		<form action="/Kakeibo/UserFC" method="post">
-			<button type="submit" name="buttonId" value="e002" class="side-item logout-btn">
+			<button type="submit" name="buttonId" value="e024" class="side-item logout-btn">
 				<i class="fas fa-right-from-bracket"></i> <span>ログアウト</span>
 			</button>
 		</form>

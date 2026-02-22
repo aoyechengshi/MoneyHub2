@@ -23,6 +23,7 @@ import Action.DeleteIncomeAction;
 import Action.DeleteIncomeCategoryAction;
 import Action.InsertAssetsAction;
 import Action.LoginAction;
+import Action.LogoutAction;
 import Action.RecordAssetsAction;
 import Action.RecordExpenseFixedAction;
 import Action.RecordExpenseVariableAction;
@@ -142,8 +143,12 @@ public class FrontControllerServlet extends HttpServlet {
 			action = new RecordAssetsAction();
 			page = action.execute(request);
 			break;
-		case "e023": // 
+		case "e023": //
 			action = new InsertAssetsAction();
+			page = action.execute(request);
+			break;
+		case "e024": // ログアウト
+			action = new LogoutAction();
 			page = action.execute(request);
 			break;
 		default:

@@ -8,8 +8,12 @@ import jakarta.servlet.http.HttpSession;
 import Exception.UserBusinessException;
 import Exception.UserSystemException;
 import Logic.AssetsCategoryTotalAmountLogic;
+import Logic.CategoryDisplayiLogic;
 import Logic.FindAssetsCategoryLogic;
+import Logic.IncomeCategoryLogic;
 import entity.Assets;
+import entity.Category;
+import entity.Income;
 
 public class AssetsAction implements ActionIF {
 	@Override
@@ -33,7 +37,17 @@ public class AssetsAction implements ActionIF {
 
 			request.setAttribute("catgoryTotalAmount", catgoryTotalAmount);
 			request.setAttribute("catgoryName", catgoryName);
-			
+
+			// 設定モーダル用カテゴリデータ
+			CategoryDisplayiLogic categoryDisplaylogic = new CategoryDisplayiLogic();
+			ArrayList<Category> variableCategories = categoryDisplaylogic.CategoryDisplayHendouhi(userId);
+			ArrayList<Category> fixedCategories = categoryDisplaylogic.CategoryDisplayKoteihi(userId);
+			IncomeCategoryLogic incomeCategoryLogic = new IncomeCategoryLogic();
+			ArrayList<Income> incomeCategoryList = incomeCategoryLogic.IncomeCategory(userId);
+			request.setAttribute("variableCategories", variableCategories);
+			request.setAttribute("fixedCategories", fixedCategories);
+			request.setAttribute("incomeCategoryList", incomeCategoryList);
+
 			// ★ どの画面を表示するか指定
             request.setAttribute("content", "assets");
 

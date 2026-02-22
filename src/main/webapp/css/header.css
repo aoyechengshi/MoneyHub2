@@ -52,10 +52,14 @@ header form {
 
 /* ロゴ */
 header .logo {
-	width: 36px;
-	height: 36px;
+	width: 56px;
+	height: 56px;
 	border-radius: 50%;
 	object-fit: cover;
+	display: block;
+	margin: 0;
+	padding: 0;
+	background: none;
 }
 
 /* ===== レイアウト ===== */

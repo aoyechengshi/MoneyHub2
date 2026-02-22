@@ -234,7 +234,7 @@
 
 	<script>
 		function openFixedModal() {
-			document.getElementById('fixedModal').style.display = 'block';
+			document.getElementById('fixedModal').style.display = 'flex';
 		}
 
 		function closeFixedModal() {
@@ -248,7 +248,7 @@
 			document.getElementById('addFixedForm').style.display = 'none';
 		}
 		function openVariableModal() {
-			document.getElementById('variableModal').style.display = 'block';
+			document.getElementById('variableModal').style.display = 'flex';
 		}
 		function closeVariableModal() {
 			document.getElementById('variableModal').style.display = 'none';
@@ -260,7 +260,7 @@
 			document.getElementById('addVariableForm').style.display = 'none';
 		}
 		function openIncomeModal() {
-			document.getElementById('incomeModal').style.display = 'block';
+			document.getElementById('incomeModal').style.display = 'flex';
 		}
 		function closeIncomeModal() {
 			document.getElementById('incomeModal').style.display = 'none';

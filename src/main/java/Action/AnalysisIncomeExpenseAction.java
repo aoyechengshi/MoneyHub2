@@ -10,9 +10,13 @@ import jakarta.servlet.http.HttpSession;
 import Exception.UserBusinessException;
 import Exception.UserSystemException;
 import Logic.AnalysisIncomeExpenseLogic;
+import Logic.CategoryDisplayiLogic;
 import Logic.CategoryGetVariableExpenseLogic;
+import Logic.IncomeCategoryLogic;
 import Logic.sumIncomeAmountLogic;
 import entity.Assets;
+import entity.Category;
+import entity.Income;
 
 public class AnalysisIncomeExpenseAction implements ActionIF {
 	@Override
@@ -56,7 +60,17 @@ public class AnalysisIncomeExpenseAction implements ActionIF {
 			request.setAttribute("analysis", analysisIncomeExpense);
 			request.setAttribute("income", sumIncomeAmount);
 			request.setAttribute("categoryExpenseList", categoryExpenseList);
-			
+
+			// 設定モーダル用カテゴリデータ
+			CategoryDisplayiLogic categoryDisplaylogic = new CategoryDisplayiLogic();
+			ArrayList<Category> variableCategories = categoryDisplaylogic.CategoryDisplayHendouhi(userId);
+			ArrayList<Category> fixedCategories = categoryDisplaylogic.CategoryDisplayKoteihi(userId);
+			IncomeCategoryLogic incomeCategoryLogic = new IncomeCategoryLogic();
+			ArrayList<Income> incomeCategoryList = incomeCategoryLogic.IncomeCategory(userId);
+			request.setAttribute("variableCategories", variableCategories);
+			request.setAttribute("fixedCategories", fixedCategories);
+			request.setAttribute("incomeCategoryList", incomeCategoryList);
+
 			// ★ どの画面を表示するか指定
             request.setAttribute("content", "assetsIncome");
 

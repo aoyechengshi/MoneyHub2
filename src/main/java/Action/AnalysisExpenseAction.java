@@ -10,7 +10,11 @@ import jakarta.servlet.http.HttpSession;
 import Exception.UserBusinessException;
 import Exception.UserSystemException;
 import Logic.AnalysisExpenseLogic;
+import Logic.CategoryDisplayiLogic;
+import Logic.IncomeCategoryLogic;
+import entity.Category;
 import entity.Expenses;
+import entity.Income;
 
 public class AnalysisExpenseAction implements ActionIF {
 
@@ -47,7 +51,17 @@ public class AnalysisExpenseAction implements ActionIF {
 			ArrayList<Expenses> AnalysisExpenseList = logic.AnalysisExpense(userId, date);
 
 			request.setAttribute("AnalysisExpenseList", AnalysisExpenseList);
-			
+
+			// 設定モーダル用カテゴリデータ
+			CategoryDisplayiLogic categoryDisplaylogic = new CategoryDisplayiLogic();
+			ArrayList<Category> variableCategories = categoryDisplaylogic.CategoryDisplayHendouhi(userId);
+			ArrayList<Category> fixedCategories = categoryDisplaylogic.CategoryDisplayKoteihi(userId);
+			IncomeCategoryLogic incomeCategoryLogic = new IncomeCategoryLogic();
+			ArrayList<Income> incomeCategoryList = incomeCategoryLogic.IncomeCategory(userId);
+			request.setAttribute("variableCategories", variableCategories);
+			request.setAttribute("fixedCategories", fixedCategories);
+			request.setAttribute("incomeCategoryList", incomeCategoryList);
+
 			// ★ どの画面を表示するか指定
             request.setAttribute("content", "assetsExpense");
 

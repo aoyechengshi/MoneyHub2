@@ -39,17 +39,3 @@ function hideAddIncomeForm() {
 	document.getElementById('addIncomeForm').style.display = 'none';
 }
 
-/* ===== サイドバー トグル ===== */
-document.addEventListener('DOMContentLoaded', function() {
-
-	// 「設定」トグル
-	document.getElementById('settingToggle').addEventListener('click', () => {
-		document.getElementById('settingSub').classList.toggle('open');
-	});
-
-	// 「総資産確認」トグル
-	document.getElementById('assetToggle').addEventListener('click', () => {
-		document.getElementById('assetSub').classList.toggle('open');
-	});
-
-});

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MoneHub ホーム画面</title>あ
+<title>MoneHub ホーム画面</title>
 <!-- 背景 -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/base.css">

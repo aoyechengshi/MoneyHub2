@@ -1,25 +1,39 @@
+/* ===== ヘッダー ===== */
 header {
 	position: relative;
-	/* 竊� 雜�㍾隕� */
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
-	padding: 20px 40px;
+	justify-content: space-between;
+	padding: 14px 32px;
 	background: #111122;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+	gap: 16px;
+}
+
+.header-brand {
+	display: flex;
+	align-items: center;
+	gap: 12px;
 }
 
 header h1 {
 	margin: 0;
 	font-family: 'Playfair Display', serif;
-	font-size: 26px;
+	font-size: 24px;
 	color: #e6c07b;
-	text-align: center;
+	letter-spacing: 0.04em;
+}
+
+.header-welcome {
+	font-size: 0.85em;
+	color: #aaa;
+	margin: 0;
+	white-space: nowrap;
 }
 
 header form {
-	width: 100%;
-	text-align: left !important;
+	margin: 0;
 }
 
 .back-btn {
@@ -29,39 +43,49 @@ header form {
 	padding: 8px 16px;
 	border-radius: 20px;
 	cursor: pointer;
-	margin: 0 !important;
+	transition: background 0.2s;
 }
 
 .back-btn:hover {
 	background: rgba(230, 192, 123, 0.15);
 }
 
-
-/* 繝ｭ繧ｴ */
+/* ロゴ */
 header .logo {
-	width: 40px;
-	height: 40px;
+	width: 36px;
+	height: 36px;
 	border-radius: 50%;
 	object-fit: cover;
 }
 
+/* ===== レイアウト ===== */
 .layout {
 	display: flex;
-	min-height: 100vh;
+	min-height: calc(100vh - 66px);
 }
 
-/* ===== 繧ｵ繧､繝峨ヰ繝ｼ ===== */
+/* ===== サイドバー ===== */
 .sidebar {
 	width: 220px;
 	background: #1a1a2f;
-	padding: 30px 20px;
+	padding: 24px 16px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 4px;
 	box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+	flex-shrink: 0;
+	position: sticky;
+	top: 0;
+	height: calc(100vh - 66px);
+	overflow-y: auto;
 }
 
-/* 繧ｵ繧､繝峨ヰ繝ｼ逕ｨ繝懊ち繝ｳ */
+/* サイドバー内のスペーサー（ログアウトを下部に押し下げる） */
+.sidebar-spacer {
+	flex: 1;
+}
+
+/* サイドバー用ボタン */
 .side-item {
 	background: none;
 	border: none;
@@ -69,53 +93,66 @@ header .logo {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	font-size: 1em;
-	padding: 12px 10px;
+	font-size: 0.95em;
+	padding: 11px 12px;
 	border-radius: 8px;
 	cursor: pointer;
 	text-align: left;
-	transition: background 0.2s, transform 0.2s;
+	width: 100%;
+	transition: background 0.2s, padding-left 0.15s;
 }
 
 .side-item.active {
 	background: rgba(230, 192, 123, 0.2);
-	border-left: 4px solid #e6c07b;
+	border-left: 3px solid #e6c07b;
+	padding-left: 9px;
 }
-
 
 .side-item i {
 	color: #e6c07b;
-	font-size: 1.2em;
+	font-size: 1.1em;
+	width: 18px;
+	text-align: center;
+	flex-shrink: 0;
 }
 
 .side-item:hover {
-	background: rgba(230, 192, 123, 0.15);
-	padding-left: 14px;
-	/* transform縺ｮ莉｣繧上ｊ�嘖tacking context繧剃ｽ懊ｉ縺ｪ縺� */
+	background: rgba(230, 192, 123, 0.12);
+	padding-left: 16px;
 }
 
+/* ログアウトボタン */
+.logout-btn {
+	color: #ff8a8a;
+	margin-top: 4px;
+}
 
-/* ===== 繝｡繧､繝ｳ ===== */
+.logout-btn i {
+	color: #ff8a8a;
+}
+
+.logout-btn:hover {
+	background: rgba(255, 100, 100, 0.12);
+}
+
+/* ===== メイン ===== */
 .main-content {
 	position: relative;
 	flex: 1;
-	/* 繧ｵ繧､繝峨ヰ繝ｼ莉･螟悶�谿九ｊ繧ｹ繝壹�繧ｹ繧偵☆縺ｹ縺ｦ蜊�譛� */
 	min-width: 0;
-	/* flex蟄占ｦ∫ｴ�縺ｮ縺ｯ縺ｿ蜃ｺ縺鈴亟豁｢ */
 	overflow-x: hidden;
 }
 
-
-/* 險ｭ螳壹し繝悶き繝�ざ繝ｪ */
+/* 設定サブカテゴリ */
 .setting-sub {
 	display: none;
-	margin-left: 20px;
-	margin-top: 8px;
+	margin-left: 16px;
+	margin-top: 2px;
 	flex-direction: column;
-	gap: 6px;
+	gap: 2px;
 }
 
-/* setting-sub蜀��form縺掲lex繝ｬ繧､繧｢繧ｦ繝医ｒ螢翫＆縺ｪ縺�ｈ縺� */
+/* setting-sub内のformをflexレイアウトを崩さないように */
 .setting-sub form {
 	display: contents;
 }
@@ -124,7 +161,7 @@ header .logo {
 	display: flex;
 }
 
-/* 繧ｵ繝夜��岼 */
+/* サブ項目 */
 .sub-item {
 	background: none;
 	border: none;
@@ -132,25 +169,90 @@ header .logo {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding: 8px 12px;
-	font-size: 0.95em;
+	padding: 8px 12px 8px 20px;
+	font-size: 0.88em;
 	border-radius: 6px;
 	cursor: pointer;
 	text-align: left;
-	transition: background 0.2s, transform 0.2s;
-	padding-left: 28px;
-	opacity: 0.9;
+	width: 100%;
+	transition: background 0.2s, padding-left 0.15s;
+	opacity: 0.85;
 }
 
 .sub-item i {
 	color: #e6c07b;
-	font-size: 1em;
+	font-size: 0.95em;
+	width: 16px;
+	text-align: center;
+	flex-shrink: 0;
 }
 
 .sub-item:hover {
-	background: rgba(230, 192, 123, 0.15);
-	padding-left: 32px;
-	/* transform縺ｮ莉｣繧上ｊ */
+	background: rgba(230, 192, 123, 0.12);
+	padding-left: 24px;
+	opacity: 1;
 }
 
-/* .modal 縺ｮ position 縺ｯ modal.css 縺ｧ邂｡逅� */
+/* サイドバーの区切り線 */
+.sidebar-divider {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	margin: 8px 0;
+}
+
+/* ===== レスポンシブ（モバイル対応） ===== */
+@media (max-width: 768px) {
+	header {
+		padding: 12px 16px;
+	}
+
+	header h1 {
+		font-size: 20px;
+	}
+
+	.header-welcome {
+		display: none;
+	}
+
+	.sidebar {
+		width: 56px;
+		padding: 16px 8px;
+		overflow: visible;
+	}
+
+	.sidebar .side-item span,
+	.sidebar .sub-item span {
+		display: none;
+	}
+
+	.sidebar .side-item {
+		justify-content: center;
+		padding: 12px;
+	}
+
+	.sidebar .side-item i {
+		font-size: 1.3em;
+	}
+
+	.setting-sub {
+		margin-left: 0;
+	}
+
+	.setting-sub.open {
+		/* モバイルではサブ項目を横に展開 */
+		position: absolute;
+		left: 56px;
+		background: #1a1a2f;
+		border-radius: 0 8px 8px 0;
+		box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+		padding: 8px;
+		z-index: 100;
+		min-width: 160px;
+	}
+
+	.setting-sub.open .sub-item span {
+		display: inline;
+	}
+}
+
+/* .modal の position は modal.css で管理 */

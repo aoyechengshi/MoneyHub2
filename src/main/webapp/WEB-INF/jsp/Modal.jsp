@@ -328,6 +328,7 @@
 <!-- ===== 資産記録モーダル ===== -->
 		<div id="assetsModal" class="modal">
 			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
 				<h2>資産を記録</h2>
 
 				<form action="/Kakeibo/UserFC" method="post">
@@ -359,6 +360,7 @@
 		<!-- ===== 資産カテゴリ追加モーダル ===== -->
 		<div id="categoryModal" class="modal">
 			<div class="modal-content">
+				<span class="close" onclick="closeCategoryModal()">&times;</span>
 				<h2>資産項目を追加</h2>
 
 				<form action="/Kakeibo/UserFC" method="post">

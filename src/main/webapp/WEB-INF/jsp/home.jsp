@@ -20,20 +20,17 @@
 	href="${pageContext.request.contextPath}/css/modal.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <body>
 	<header>
-		<div class="header-text">
+		<div class="header-brand">
+			<img class="logo" src="${pageContext.request.contextPath}/images/MoneyHub.png" alt="MoneyHub">
 			<h1>MoneyHub</h1>
-			<p>
-				ようこそ
-				<c:out value="${sessionScope.loginUser.userName}" />
-				さん！
-			</p>
 		</div>
+		<p class="header-welcome">
+			ようこそ、<c:out value="${sessionScope.loginUser.userName}" />さん
+		</p>
 	</header>
 	<div class="layout">
 		<!-- サイドバー -->

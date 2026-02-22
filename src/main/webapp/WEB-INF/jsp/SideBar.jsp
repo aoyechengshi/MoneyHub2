@@ -39,10 +39,19 @@
 				</button>
 			</form>
 			<button type="button" class="side-item sub-item" onclick="openBalanceAnalysisModal()">
-				<i class="fas fa-chart-line"></i> <span>収支分析</span>
+				<i class="fas fa-chart-bar"></i> <span>収支分析</span>
 			</button>
 			<button type="button" class="side-item sub-item" onclick="openExpenseModal()">
-				<i class="fas fa-chart-line"></i> <span>出費分析</span>
+				<i class="fas fa-receipt"></i> <span>出費分析</span>
 			</button>
 		</div>
 
+		<!-- スペーサー（ログアウトを下部に固定） -->
+		<div class="sidebar-spacer"></div>
+
+		<!-- ログアウト -->
+		<form action="/Kakeibo/UserFC" method="post">
+			<button type="submit" name="buttonId" value="e002" class="side-item logout-btn">
+				<i class="fas fa-right-from-bracket"></i> <span>ログアウト</span>
+			</button>
+		</form>

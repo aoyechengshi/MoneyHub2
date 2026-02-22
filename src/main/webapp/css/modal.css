@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+/* ===== モーダル全体 ===== */
+/* ===============================
+   Modal Base
+================================= */
+.modal {
+	display: none;
+	position: fixed;
+	inset: 0; /* top/right/bottom/left: 0 の省略形 */
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+/* ===============================
+   Modal Content Box
+================================= */
+.modal-content {
+	background: #1a1a2f;
+	padding: 30px;
+	border-radius: 10px;
+	width: 400px;
+	max-width: 90%;
+	max-height: 80vh;
+	overflow-y: auto;
+
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	position: relative;
+	border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* モーダルタイトル */
+.modal-content h3 {
+	color: #e6c07b;
+	font-family: 'Playfair Display', serif;
+	margin-top: 0;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* モーダル閉じるボタン */
+.modal-content .close {
+	float: right;
+	font-size: 22px;
+	font-weight: bold;
+	color: #f5f5f5;
+	cursor: pointer;
+}
+
+.modal-content .close:hover {
+	color: #e6c07b;
+}
+
+/* モーダル内のすべてのボタン */
+.modal-content button {
+	background: #2a2a44;
+	color: #f5f5f5;
+	border: none;
+	border-radius: 6px;
+	padding: 10px 16px;
+	margin: 6px 4px 6px 0;
+	cursor: pointer;
+	font-size: 14px;
+	transition: 0.2s;
+}
+
+.modal-content button:hover {
+	background: #3a3a55;
+}
+
+/* Step0・Step1のボタン横並び */
+#step0,
+#expenseForm {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+/* 入力欄（number, select） */
+.modal-content input[type="number"],
+.modal-content select {
+	width: 100%;
+	padding: 8px 10px;
+	margin: 6px 0 12px 0;
+	border-radius: 6px;
+	border: 1px solid #444;
+	background: #1a1a2f;
+	color: #f5f5f5;
+	font-size: 14px;
+}
+
+/* 入力欄（text） */
+.modal-content input[type="text"] {
+	width: 100%;
+	padding: 8px 10px;
+	height: 40px;
+	margin: 6px 0 12px 0;
+	border-radius: 6px;
+	border: 1px solid #444;
+	background: #1a1a2f;
+	color: #f5f5f5;
+	font-size: 14px;
+}
+
+/* 固定費テーブル */
+.modal-content table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+	background: #1a1a2f;
+}
+
+.modal-content th,
+.modal-content td {
+	padding: 8px;
+	border: 1px solid #444;
+	text-align: left;
+	color: #f5f5f5;
+	font-size: 14px;
+}
+
+.modal-content th {
+	background: #2a2a44;
+}
+
+/* チェックボックス中央寄せ */
+.modal-content input[type="checkbox"] {
+	display: block;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+/* 固定費フォームのスクロール調整 */
+#fixedForm {
+	max-height: 400px;
+	overflow-y: auto;
+	padding-right: 6px;
+}
+
+.record-btn {
+	background: linear-gradient(135deg, #e6c07b, #c9a44d);
+	color: #1a1a2f;
+	border: none;
+	border-radius: 10px;
+	padding: 10px 18px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.record-btn:hover {
+	opacity: 0.85;
+}

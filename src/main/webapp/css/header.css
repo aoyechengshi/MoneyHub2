@@ -1,0 +1,156 @@
+header {
+	position: relative;
+	/* 竊� 雜�㍾隕� */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 40px;
+	background: #111122;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+	margin: 0;
+	font-family: 'Playfair Display', serif;
+	font-size: 26px;
+	color: #e6c07b;
+	text-align: center;
+}
+
+header form {
+	width: 100%;
+	text-align: left !important;
+}
+
+.back-btn {
+	background: transparent;
+	border: 1px solid #e6c07b;
+	color: #e6c07b;
+	padding: 8px 16px;
+	border-radius: 20px;
+	cursor: pointer;
+	margin: 0 !important;
+}
+
+.back-btn:hover {
+	background: rgba(230, 192, 123, 0.15);
+}
+
+
+/* 繝ｭ繧ｴ */
+header .logo {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.layout {
+	display: flex;
+	min-height: 100vh;
+}
+
+/* ===== 繧ｵ繧､繝峨ヰ繝ｼ ===== */
+.sidebar {
+	width: 220px;
+	background: #1a1a2f;
+	padding: 30px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 繧ｵ繧､繝峨ヰ繝ｼ逕ｨ繝懊ち繝ｳ */
+.side-item {
+	background: none;
+	border: none;
+	color: #fdf6e3;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 1em;
+	padding: 12px 10px;
+	border-radius: 8px;
+	cursor: pointer;
+	text-align: left;
+	transition: background 0.2s, transform 0.2s;
+}
+
+.side-item.active {
+	background: rgba(230, 192, 123, 0.2);
+	border-left: 4px solid #e6c07b;
+}
+
+
+.side-item i {
+	color: #e6c07b;
+	font-size: 1.2em;
+}
+
+.side-item:hover {
+	background: rgba(230, 192, 123, 0.15);
+	padding-left: 14px;
+	/* transform縺ｮ莉｣繧上ｊ�嘖tacking context繧剃ｽ懊ｉ縺ｪ縺� */
+}
+
+
+/* ===== 繝｡繧､繝ｳ ===== */
+.main-content {
+	position: relative;
+	flex: 1;
+	/* 繧ｵ繧､繝峨ヰ繝ｼ莉･螟悶�谿九ｊ繧ｹ繝壹�繧ｹ繧偵☆縺ｹ縺ｦ蜊�譛� */
+	min-width: 0;
+	/* flex蟄占ｦ∫ｴ�縺ｮ縺ｯ縺ｿ蜃ｺ縺鈴亟豁｢ */
+	overflow-x: hidden;
+}
+
+
+/* 險ｭ螳壹し繝悶き繝�ざ繝ｪ */
+.setting-sub {
+	display: none;
+	margin-left: 20px;
+	margin-top: 8px;
+	flex-direction: column;
+	gap: 6px;
+}
+
+/* setting-sub蜀��form縺掲lex繝ｬ繧､繧｢繧ｦ繝医ｒ螢翫＆縺ｪ縺�ｈ縺� */
+.setting-sub form {
+	display: contents;
+}
+
+.setting-sub.open {
+	display: flex;
+}
+
+/* 繧ｵ繝夜��岼 */
+.sub-item {
+	background: none;
+	border: none;
+	color: #fdf6e3;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	font-size: 0.95em;
+	border-radius: 6px;
+	cursor: pointer;
+	text-align: left;
+	transition: background 0.2s, transform 0.2s;
+	padding-left: 28px;
+	opacity: 0.9;
+}
+
+.sub-item i {
+	color: #e6c07b;
+	font-size: 1em;
+}
+
+.sub-item:hover {
+	background: rgba(230, 192, 123, 0.15);
+	padding-left: 32px;
+	/* transform縺ｮ莉｣繧上ｊ */
+}
+
+/* .modal 縺ｮ position 縺ｯ modal.css 縺ｧ邂｡逅� */

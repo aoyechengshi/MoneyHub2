@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+#calendar {
+	display: block;
+	width: 95%;
+	max-width: 1400px;
+	margin: 40px auto;
+	background: #1a1a2f;
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	box-sizing: border-box;
+}
+
+.fc-theme-standard td,
+/* セルの境界線 */
+.fc-theme-standard th {
+	/* セルの境界線 */
+	border-color: rgba(255, 255, 255, 0.05);
+}
+
+.fc .fc-toolbar-title {
+	/* カレンダーのタイトル */
+	color: #e6c07b;
+	font-size: 1.8em;
+	font-family: 'Playfair Display', serif;
+}
+
+.fc-button {
+	/* カレンダーのボタンの見た目 */
+	background: #2a2a44 !important;
+	border: none !important;
+	color: #dcdcdc !important;
+	border-radius: 5px !important;
+}
+
+.fc-button:hover {
+	/* カーソルを合わせた時の装飾 */
+	background: #3a3a55 !important;
+}
+
+.fc-event {
+	border-radius: 6px;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+	font-weight: 400;
+}
+
+.fc-day-today {
+	background: rgba(230, 192, 123, 0.15) !important;
+	box-shadow: inset 0 0 0 2px #e6c07b;
+}
+
+.income-chip {
+	background: linear-gradient(135deg, #3fb950, #2ea043);
+	color: #fff;
+	font-weight: 600;
+}

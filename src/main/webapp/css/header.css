@@ -1,40 +1,60 @@
-/* ===== ヘッダー ===== */
+/* =====================================================
+   HEADER
+   ===================================================== */
 header {
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 32px;
-	height: 66px;
-	background: rgba(5, 5, 15, 0.92);
-	backdrop-filter: blur(16px);
-	-webkit-backdrop-filter: blur(16px);
-	border-bottom: 1px solid var(--gold-border);
-	box-shadow: 0 1px 0 var(--gold-border), 0 4px 30px rgba(0, 0, 0, 0.6);
+	padding: 0 28px;
+	height: 60px;
+	background: rgba(6, 7, 15, 0.97);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-bottom: 1px solid var(--indigo-border);
+	box-shadow: 0 1px 0 rgba(201,162,39,0.07), 0 4px 24px rgba(0,0,0,0.5);
 	z-index: 100;
 	gap: 16px;
+}
+
+/* gradient accent line at bottom */
+header::after {
+	content: '';
+	position: absolute;
+	bottom: 0; left: 0; right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--indigo) 20%,
+		rgba(201,162,39,0.55) 50%,
+		var(--indigo) 80%,
+		transparent 100%
+	);
+	opacity: 0.45;
 }
 
 .header-brand {
 	display: flex;
 	align-items: center;
-	gap: 14px;
+	gap: 12px;
 }
 
 header h1 {
 	margin: 0;
 	font-family: 'Playfair Display', serif;
-	font-size: 22px;
-	background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-base) 100%);
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 0.07em;
+	background: linear-gradient(120deg, var(--gold-bright) 0%, #fff5a0 45%, var(--indigo-bright) 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	letter-spacing: 0.06em;
 }
 
 .header-welcome {
-	font-size: 0.8em;
+	font-size: 0.78em;
 	color: var(--text-secondary);
 	margin: 0;
 	white-space: nowrap;
@@ -47,57 +67,61 @@ header form {
 
 .back-btn {
 	background: transparent;
-	border: 1px solid var(--gold-border);
-	color: var(--gold-base);
-	padding: 8px 22px;
+	border: 1px solid var(--indigo-border);
+	color: var(--indigo-bright);
+	padding: 7px 20px;
 	border-radius: 20px;
 	cursor: pointer;
-	transition: all 0.25s;
-	font-size: 0.86em;
+	transition: all 0.22s;
+	font-size: 0.84em;
 	letter-spacing: 0.04em;
 }
 
 .back-btn:hover {
-	background: var(--gold-glow);
-	border-color: var(--gold-bright);
-	color: var(--gold-bright);
-	box-shadow: 0 0 18px var(--gold-glow);
+	background: var(--indigo-glow);
+	border-color: var(--indigo);
+	color: #fff;
+	box-shadow: 0 0 16px var(--indigo-glow);
 }
 
 /* ロゴ */
 header .logo {
-	width: 48px;
-	height: 48px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	object-fit: cover;
 	display: block;
 	margin: 0;
 	padding: 0;
 	background: none;
-	box-shadow: 0 0 14px var(--gold-glow);
+	box-shadow: 0 0 12px var(--gold-glow);
 }
 
-/* ===== レイアウト ===== */
+/* =====================================================
+   LAYOUT
+   ===================================================== */
 .layout {
 	display: flex;
-	min-height: calc(100vh - 66px);
+	min-height: calc(100vh - 60px);
 }
 
-/* ===== サイドバー ===== */
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
 .sidebar {
-	width: 220px;
-	background: rgba(8, 8, 20, 0.96);
-	backdrop-filter: blur(10px);
-	padding: 20px 10px;
+	width: 210px;
+	background: rgba(6, 7, 15, 0.98);
+	backdrop-filter: blur(12px);
+	padding: 18px 8px;
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
-	border-right: 1px solid var(--gold-border);
-	box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4);
+	gap: 1px;
+	border-right: 1px solid var(--indigo-border);
+	box-shadow: 1px 0 24px rgba(0,0,0,0.4);
 	flex-shrink: 0;
 	position: sticky;
 	top: 0;
-	height: calc(100vh - 66px);
+	height: calc(100vh - 60px);
 	overflow-y: auto;
 }
 
@@ -105,89 +129,110 @@ header .logo {
 	flex: 1;
 }
 
+/* sidebar section labels */
+.sidebar-label {
+	font-size: 0.64em;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	padding: 12px 14px 4px;
+	user-select: none;
+}
+
 .side-item {
 	background: none;
 	border: none;
-	color: var(--text-primary);
+	color: rgba(210, 215, 240, 0.6);
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	font-size: 0.88em;
-	padding: 11px 14px;
-	border-radius: 8px;
+	gap: 11px;
+	font-size: 0.86em;
+	padding: 10px 14px;
+	border-radius: var(--radius-md);
 	cursor: pointer;
 	text-align: left;
 	width: 100%;
-	transition: all 0.2s ease;
+	transition: all 0.18s ease;
 	letter-spacing: 0.02em;
 	position: relative;
 }
 
+/* active state — indigo left border + gradient */
 .side-item.active {
-	background: linear-gradient(120deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.06) 100%);
-	border-left: 2px solid var(--gold-base);
+	background: linear-gradient(
+		90deg,
+		rgba(99, 102, 241, 0.18) 0%,
+		rgba(99, 102, 241, 0.05) 100%
+	);
+	border-left: 2px solid var(--indigo);
 	padding-left: 12px;
-	color: var(--gold-bright);
-	box-shadow: inset 0 0 24px rgba(201, 162, 39, 0.05);
+	color: var(--indigo-bright);
 }
 
 .side-item i {
-	color: var(--gold-base);
-	font-size: 1em;
-	width: 18px;
+	font-size: 0.95em;
+	width: 17px;
 	text-align: center;
 	flex-shrink: 0;
-	transition: all 0.2s;
+	transition: all 0.18s;
+	color: var(--text-secondary);
+}
+
+.side-item.active i {
+	color: var(--indigo-bright);
 }
 
 .side-item:hover {
-	background: rgba(201, 162, 39, 0.1);
-	padding-left: 18px;
-	color: var(--gold-bright);
+	background: rgba(99, 102, 241, 0.08);
+	color: var(--text-primary);
 }
 
 .side-item:hover i {
-	color: var(--gold-bright);
-	filter: drop-shadow(0 0 5px var(--gold-dim));
+	color: var(--indigo-bright);
 }
 
+/* logout */
 .logout-btn {
-	color: #b06060;
+	color: rgba(180, 80, 90, 0.7);
 	margin-top: 4px;
 }
 
 .logout-btn i {
-	color: #b06060;
+	color: rgba(180, 80, 90, 0.6);
 }
 
 .logout-btn:hover {
-	background: rgba(180, 60, 60, 0.12);
+	background: rgba(200, 60, 70, 0.1);
 	color: #ff8a8a;
-	padding-left: 18px;
 }
 
 .logout-btn:hover i {
 	color: #ff8a8a;
-	filter: drop-shadow(0 0 5px rgba(200, 80, 80, 0.5));
 }
 
-/* ===== メイン ===== */
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
 .main-content {
 	position: relative;
 	flex: 1;
 	min-width: 0;
-	height: calc(100vh - 66px);
+	height: calc(100vh - 60px);
 	overflow-x: hidden;
 	overflow-y: auto;
 }
 
-/* 設定サブカテゴリ */
+/* =====================================================
+   SIDEBAR SUB ITEMS
+   ===================================================== */
 .setting-sub {
 	display: none;
-	margin-left: 16px;
+	margin-left: 12px;
 	margin-top: 2px;
 	flex-direction: column;
-	gap: 2px;
+	gap: 1px;
+	padding-left: 4px;
+	border-left: 1px solid var(--indigo-border);
 }
 
 .setting-sub form {
@@ -201,42 +246,47 @@ header .logo {
 .sub-item {
 	background: none;
 	border: none;
-	color: var(--text-primary);
+	color: rgba(200, 205, 230, 0.5);
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding: 8px 12px 8px 22px;
-	font-size: 0.84em;
-	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 0.82em;
+	border-radius: var(--radius-sm);
 	cursor: pointer;
 	text-align: left;
 	width: 100%;
-	transition: all 0.2s;
-	opacity: 0.8;
+	transition: all 0.18s;
 }
 
 .sub-item i {
-	color: var(--gold-base);
-	font-size: 0.9em;
-	width: 16px;
+	font-size: 0.88em;
+	width: 15px;
 	text-align: center;
 	flex-shrink: 0;
+	color: var(--text-secondary);
 }
 
 .sub-item:hover {
-	background: rgba(201, 162, 39, 0.09);
-	padding-left: 26px;
-	opacity: 1;
-	color: var(--gold-bright);
+	background: rgba(99, 102, 241, 0.07);
+	color: var(--indigo-bright);
+	padding-left: 16px;
+}
+
+.sub-item:hover i {
+	color: var(--indigo-bright);
 }
 
 .sidebar-divider {
 	border: none;
-	border-top: 1px solid rgba(201, 162, 39, 0.1);
-	margin: 8px 0;
+	border-top: 1px solid var(--indigo-border);
+	margin: 8px 4px;
+	opacity: 0.6;
 }
 
-/* ===== レスポンシブ ===== */
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
 @media (max-width: 768px) {
 	header {
 		padding: 0 16px;
@@ -251,8 +301,8 @@ header .logo {
 	}
 
 	.sidebar {
-		width: 56px;
-		padding: 16px 8px;
+		width: 54px;
+		padding: 14px 7px;
 		overflow: visible;
 	}
 
@@ -263,32 +313,32 @@ header .logo {
 
 	.sidebar .side-item {
 		justify-content: center;
-		padding: 12px;
+		padding: 11px;
 	}
 
 	.sidebar .side-item i {
-		font-size: 1.3em;
+		font-size: 1.25em;
 	}
 
 	.setting-sub {
 		margin-left: 0;
+		border-left: none;
+		padding-left: 0;
 	}
 
 	.setting-sub.open {
 		position: absolute;
-		left: 56px;
-		background: rgba(8, 8, 20, 0.98);
-		border-radius: 0 8px 8px 0;
-		border: 1px solid var(--gold-border);
-		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+		left: 54px;
+		background: rgba(6, 7, 20, 0.99);
+		border-radius: 0 10px 10px 0;
+		border: 1px solid var(--indigo-border);
+		box-shadow: 4px 4px 24px rgba(0,0,0,0.7);
 		padding: 8px;
 		z-index: 100;
-		min-width: 160px;
+		min-width: 156px;
 	}
 
 	.setting-sub.open .sub-item span {
 		display: inline;
 	}
 }
-
-/* .modal の position は modal.css で管理 */

@@ -1,42 +1,60 @@
 @charset "UTF-8";
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
-/* ===== デザイントークン ===== */
+/* =====================================================
+   DESIGN TOKENS
+   ===================================================== */
 :root {
-	--bg-deep:     #05050f;
-	--bg-surface:  #0b0b1c;
-	--bg-elevated: #111126;
-	--bg-glass:    rgba(12, 12, 28, 0.78);
+	/* ── Backgrounds ── */
+	--bg-deep:     #06070f;
+	--bg-surface:  #090b18;
+	--bg-elevated: #0d1024;
+	--bg-glass:    rgba(9, 11, 24, 0.88);
 
-	--gold-bright: #f2c84b;
+	/* ── Gold  (premium / financial) ── */
+	--gold-bright: #f0c84a;
 	--gold-base:   #c9a227;
-	--gold-dim:    rgba(201, 162, 39, 0.55);
-	--gold-glow:   rgba(201, 162, 39, 0.22);
-	--gold-border: rgba(201, 162, 39, 0.28);
+	--gold-dim:    rgba(201, 162, 39, 0.45);
+	--gold-glow:   rgba(201, 162, 39, 0.16);
+	--gold-border: rgba(201, 162, 39, 0.2);
 
-	--text-primary:   #ececf8;
-	--text-secondary: #7a7a9a;
+	/* ── Indigo  (primary brand accent) ── */
+	--indigo:        #6366f1;
+	--indigo-bright: #818cf8;
+	--indigo-dim:    rgba(99, 102, 241, 0.4);
+	--indigo-glow:   rgba(99, 102, 241, 0.14);
+	--indigo-border: rgba(99, 102, 241, 0.18);
 
+	/* ── Text ── */
+	--text-primary:   #e2e5f4;
+	--text-secondary: #525878;
+	--text-muted:     #252840;
+
+	/* ── Radius ── */
+	--radius-sm: 6px;
 	--radius-md: 10px;
 	--radius-lg: 14px;
+	--radius-xl: 20px;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
 	box-sizing: border-box;
 }
 
 body {
 	font-family: 'Inter', 'Lato', sans-serif;
+	font-size: 14px;
+	line-height: 1.6;
+
 	background: var(--bg-deep);
 	background-image:
-		radial-gradient(ellipse 80% 60% at 15% 40%, rgba(80, 50, 160, 0.12) 0%, transparent 60%),
-		radial-gradient(ellipse 60% 40% at 85% 15%, rgba(160, 110, 20, 0.09) 0%, transparent 55%),
-		radial-gradient(ellipse 50% 50% at 50% 100%, rgba(30, 20, 80, 0.15) 0%, transparent 60%);
+		radial-gradient(ellipse 130% 55% at -5% 5%,  rgba(99, 102, 241, 0.09) 0%, transparent 55%),
+		radial-gradient(ellipse 80%  45% at 108% 0%,  rgba(201, 162, 39, 0.06) 0%, transparent 48%),
+		radial-gradient(ellipse 70%  70% at 50%  108%, rgba(40, 35, 110, 0.12) 0%, transparent 62%);
 	background-attachment: fixed;
+
 	color: var(--text-primary);
 	margin: 0;
 	padding: 0;
@@ -49,7 +67,7 @@ body {
 	height: 140px;
 	border-radius: 50%;
 	object-fit: contain;
-	background: rgba(255, 255, 255, 0.05);
+	background: rgba(255, 255, 255, 0.04);
 	padding: 10px;
 	display: block;
 	margin: 0 auto 24px;

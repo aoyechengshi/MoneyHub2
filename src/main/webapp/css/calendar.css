@@ -1,101 +1,242 @@
 @charset "UTF-8";
 
+/* ========================================================
+   CALENDAR  —  Near-Future Luxury
+   ======================================================== */
+
+/* ---------- container ---------- */
 #calendar {
+	position: relative;
 	display: block;
 	width: 95%;
 	max-width: 1400px;
 	margin: 16px auto;
-	background: rgba(10, 10, 22, 0.88);
-	backdrop-filter: blur(10px);
-	padding: 24px;
-	border-radius: 14px;
-	border: 1px solid var(--gold-border);
-	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+	padding: 28px;
+	border-radius: 16px;
 	box-sizing: border-box;
+
+	/* deep glass base */
+	background:
+		linear-gradient(135deg, rgba(6,6,20,0.96) 0%, rgba(10,8,30,0.94) 100%);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+
+	/* tech-grid overlay */
+	background-image:
+		linear-gradient(135deg, rgba(6,6,20,0.97) 0%, rgba(10,8,30,0.94) 100%),
+		repeating-linear-gradient(0deg,   transparent, transparent 39px, rgba(0,210,255,0.035) 40px),
+		repeating-linear-gradient(90deg,  transparent, transparent 39px, rgba(0,210,255,0.035) 40px);
+
+	/* dual-color neon border */
+	border: 1px solid rgba(0, 210, 255, 0.22);
+	box-shadow:
+		0 0 0 1px rgba(201,162,39,0.14),
+		0 0 40px rgba(0,210,255,0.06),
+		0 8px 60px rgba(0,0,0,0.7),
+		inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
-/* セルの境界線 */
-.fc-theme-standard td,
-.fc-theme-standard th {
-	border-color: rgba(201, 162, 39, 0.1);
+/* tech corner brackets */
+#calendar::before,
+#calendar::after {
+	content: '';
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	pointer-events: none;
+	z-index: 2;
+}
+#calendar::before {
+	top: -1px;
+	left: -1px;
+	border-top: 2px solid var(--gold-bright);
+	border-left: 2px solid var(--gold-bright);
+	border-radius: 4px 0 0 0;
+	box-shadow: -1px -1px 8px var(--gold-glow);
+}
+#calendar::after {
+	bottom: -1px;
+	right: -1px;
+	border-bottom: 2px solid rgba(0,210,255,0.7);
+	border-right:  2px solid rgba(0,210,255,0.7);
+	border-radius: 0 0 4px 0;
+	box-shadow: 1px 1px 8px rgba(0,210,255,0.22);
 }
 
-/* カレンダータイトル */
+/* ---------- toolbar ---------- */
+.fc .fc-toolbar.fc-header-toolbar {
+	margin-bottom: 18px;
+	padding-bottom: 14px;
+	border-bottom: 1px solid rgba(0,210,255,0.1);
+}
+
 .fc .fc-toolbar-title {
-	color: var(--gold-bright);
-	font-size: 1.55em;
 	font-family: 'Playfair Display', serif;
-	letter-spacing: 0.04em;
+	font-size: 1.6em;
+	letter-spacing: 0.05em;
+	background: linear-gradient(90deg, var(--gold-bright) 0%, #fff0a0 45%, rgba(0,210,255,0.85) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-shadow: none;
+	filter: drop-shadow(0 0 8px rgba(201,162,39,0.4));
 }
 
-/* ナビゲーションボタン */
+/* ---------- nav buttons ---------- */
 .fc-button {
-	background: rgba(201, 162, 39, 0.1) !important;
-	border: 1px solid var(--gold-border) !important;
-	color: var(--gold-base) !important;
+	background: rgba(0,210,255,0.06) !important;
+	border: 1px solid rgba(0,210,255,0.25) !important;
+	color: rgba(0,210,255,0.85) !important;
 	border-radius: 6px !important;
-	font-size: 0.84em !important;
-	transition: all 0.2s !important;
-	letter-spacing: 0.03em !important;
+	font-size: 0.83em !important;
+	letter-spacing: 0.05em !important;
+	transition: all 0.22s ease !important;
+	text-shadow: 0 0 8px rgba(0,210,255,0.5) !important;
 }
 
 .fc-button:hover {
-	background: rgba(201, 162, 39, 0.2) !important;
-	border-color: var(--gold-base) !important;
-	color: var(--gold-bright) !important;
-	box-shadow: 0 0 14px var(--gold-glow) !important;
+	background: rgba(0,210,255,0.14) !important;
+	border-color: rgba(0,210,255,0.6) !important;
+	color: #fff !important;
+	box-shadow: 0 0 16px rgba(0,210,255,0.3), inset 0 0 8px rgba(0,210,255,0.08) !important;
+	text-shadow: 0 0 12px rgba(0,210,255,0.9) !important;
 }
 
 .fc-button-active,
 .fc-button:not(:disabled):active {
-	background: rgba(201, 162, 39, 0.28) !important;
+	background: rgba(201,162,39,0.18) !important;
 	border-color: var(--gold-bright) !important;
 	color: var(--gold-bright) !important;
-	box-shadow: 0 0 18px var(--gold-glow) !important;
+	box-shadow: 0 0 18px var(--gold-glow), inset 0 0 10px rgba(201,162,39,0.06) !important;
+	text-shadow: 0 0 10px var(--gold-base) !important;
 }
 
-/* イベントチップ */
-.fc-event {
-	border-radius: 4px;
-	border: none !important;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-	font-size: 0.78em;
-	font-weight: 500;
-	letter-spacing: 0.01em;
+/* ---------- grid ---------- */
+.fc-theme-standard td,
+.fc-theme-standard th {
+	border-color: rgba(0,210,255,0.08);
 }
 
-/* 今日のセル */
-.fc-day-today {
-	background: rgba(201, 162, 39, 0.07) !important;
-	box-shadow: inset 0 0 0 1px rgba(201, 162, 39, 0.35);
+.fc-theme-standard .fc-scrollgrid {
+	border-color: rgba(0,210,255,0.1);
 }
 
-/* 曜日ヘッダー */
+/* ---------- day header ---------- */
 .fc .fc-col-header-cell-cushion {
-	color: var(--gold-base);
-	font-size: 0.8em;
-	letter-spacing: 0.08em;
+	color: rgba(0,210,255,0.7);
+	font-size: 0.76em;
+	letter-spacing: 0.12em;
 	font-weight: 500;
 	text-transform: uppercase;
 	padding: 10px 4px;
+	text-shadow: 0 0 8px rgba(0,210,255,0.4);
 }
 
-/* 日付番号 */
+/* saturday / sunday tint */
+.fc-day-sat .fc-col-header-cell-cushion {
+	color: rgba(100,180,255,0.75);
+}
+.fc-day-sun .fc-col-header-cell-cushion {
+	color: rgba(255,100,120,0.75);
+}
+
+/* ---------- day cells ---------- */
 .fc .fc-daygrid-day-number {
 	color: var(--text-secondary);
-	font-size: 0.82em;
-	padding: 4px 8px;
-	transition: color 0.2s;
+	font-size: 0.8em;
+	padding: 5px 9px;
+	transition: color 0.2s, text-shadow 0.2s;
 }
 
 .fc .fc-daygrid-day:hover .fc-daygrid-day-number {
-	color: var(--gold-bright);
+	color: rgba(0,210,255,0.9);
+	text-shadow: 0 0 10px rgba(0,210,255,0.6);
 }
 
-/* 収入チップ */
-.income-chip {
-	background: linear-gradient(135deg, #1f6640, #164d30) !important;
-	color: #80ffb0 !important;
+.fc .fc-daygrid-day:hover {
+	background: rgba(0,210,255,0.04) !important;
+}
+
+/* ---------- today ---------- */
+.fc-day-today {
+	background: rgba(201,162,39,0.06) !important;
+	position: relative;
+}
+.fc-day-today .fc-daygrid-day-number {
+	color: var(--gold-bright) !important;
+	text-shadow: 0 0 10px var(--gold-base);
+	font-weight: 600;
+}
+/* pulsing ring on today */
+.fc-day-today::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border: 1px solid rgba(201,162,39,0.45);
+	pointer-events: none;
+	animation: todayPulse 2.8s ease-in-out infinite;
+}
+@keyframes todayPulse {
+	0%, 100% { opacity: 1;  box-shadow: inset 0 0 12px rgba(201,162,39,0.12); }
+	50%       { opacity: 0.5; box-shadow: inset 0 0 24px rgba(201,162,39,0.22); }
+}
+
+/* ---------- event chips ---------- */
+.fc-event {
+	border-radius: 4px;
+	border: none !important;
+	font-size: 0.77em;
 	font-weight: 500;
-	border-left: 2px solid #3ddc84 !important;
+	letter-spacing: 0.02em;
+	transition: filter 0.2s, transform 0.15s;
+	position: relative;
+	overflow: hidden;
+}
+.fc-event::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+	pointer-events: none;
+}
+.fc-event:hover {
+	filter: brightness(1.25) drop-shadow(0 0 6px currentColor);
+	transform: scaleX(1.02);
+	z-index: 10;
+}
+
+/* ---------- income chip ---------- */
+.income-chip {
+	background: linear-gradient(135deg, #0d4a3a 0%, #0a3328 100%) !important;
+	color: #3dffc0 !important;
+	border-left: 2px solid #00ffa0 !important;
+	box-shadow: 0 0 8px rgba(0,255,160,0.2) !important;
+	text-shadow: 0 0 6px rgba(0,255,160,0.5) !important;
+}
+
+/* ---------- more-link ---------- */
+.fc .fc-daygrid-more-link {
+	color: rgba(0,210,255,0.7);
+	font-size: 0.75em;
+	letter-spacing: 0.05em;
+}
+.fc .fc-daygrid-more-link:hover {
+	color: rgba(0,210,255,1);
+	text-shadow: 0 0 8px rgba(0,210,255,0.6);
+}
+
+/* ---------- popover (overflow) ---------- */
+.fc .fc-popover {
+	background: rgba(8,8,24,0.96) !important;
+	border: 1px solid rgba(0,210,255,0.25) !important;
+	border-radius: 10px !important;
+	box-shadow: 0 0 30px rgba(0,210,255,0.12), 0 8px 30px rgba(0,0,0,0.7) !important;
+	backdrop-filter: blur(16px);
+}
+.fc .fc-popover-header {
+	background: rgba(0,210,255,0.07) !important;
+	color: rgba(0,210,255,0.85) !important;
+	border-radius: 10px 10px 0 0 !important;
+	font-size: 0.82em;
+	letter-spacing: 0.08em;
 }

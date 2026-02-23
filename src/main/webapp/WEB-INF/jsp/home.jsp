@@ -61,6 +61,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
 
+    function calcCalendarHeight() {
+        // ヘッダー(66px) + 上下margin(16px×2) + 上下padding(25px×2) = 148px
+        return window.innerHeight - 148;
+    }
+
+    function positionTooltip(e, tooltip) {
+        const pad = 14;
+        let x = e.clientX + pad;
+        let y = e.clientY + pad;
+        if (x + tooltip.offsetWidth > window.innerWidth - pad) {
+            x = e.clientX - tooltip.offsetWidth - pad;
+        }
+        if (y + tooltip.offsetHeight > window.innerHeight - pad) {
+            y = e.clientY - tooltip.offsetHeight - pad;
+        }
+        tooltip.style.left = x + 'px';
+        tooltip.style.top  = y + 'px';
+    }
+
     /* ===== 収入イベント ===== */
     const incomeEvents = [
         <c:forEach var="inc" items="${requestScope.incomeList}" varStatus="status">
@@ -108,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         initialView: 'dayGridMonth',
         fixedWeekCount: false,
         events: allEvents,
+        height: calcCalendarHeight(),
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -143,10 +163,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('editIncomeDate').value = info.event.startStr;
                 document.getElementById('editIncomeModal').style.display = 'flex';
             }
+        },
+
+        eventDidMount: function (info) {
+            const memo = info.event.extendedProps.memo || info.event.extendedProps.note || '';
+            if (!memo.trim()) return;
+            const tooltip = document.getElementById('fcTooltip');
+            info.el.addEventListener('mouseenter', function (e) {
+                tooltip.textContent = memo;
+                tooltip.style.display = 'block';
+                positionTooltip(e, tooltip);
+            });
+            info.el.addEventListener('mousemove', function (e) {
+                positionTooltip(e, tooltip);
+            });
+            info.el.addEventListener('mouseleave', function () {
+                tooltip.style.display = 'none';
+            });
         }
     });
 
     calendar.render();
+
+    window.addEventListener('resize', function () {
+        calendar.setOption('height', calcCalendarHeight());
+    });
 
     /* ===== モーダル閉じる処理 ===== */
     const modal = document.getElementById('recordModal');

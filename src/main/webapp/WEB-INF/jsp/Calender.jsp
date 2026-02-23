@@ -23,6 +23,7 @@
 
 <div style="width: 100%; min-width: 0; box-sizing: border-box;">
 	<div id="calendar"></div>
+	<div id="fcTooltip" class="fc-event-tooltip"></div>
 </div>
 
 

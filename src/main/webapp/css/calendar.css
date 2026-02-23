@@ -1,255 +1,181 @@
 @charset "UTF-8";
 
 /* =====================================================
-   CALENDAR  —  Premium Fintech Dashboard
+   CALENDAR — White / Minimal
    ===================================================== */
 
 /* ── Container ── */
 #calendar {
-	position: relative;
 	display: block;
 	width: 95%;
 	max-width: 1400px;
 	margin: 20px auto;
-	padding: 24px 24px 20px;
+	padding: 24px 22px 20px;
 	border-radius: var(--radius-xl);
 	box-sizing: border-box;
 
-	background: linear-gradient(160deg, rgba(9,10,22,0.98) 0%, rgba(11,13,28,0.96) 100%);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
-
-	border: 1px solid var(--indigo-border);
-	box-shadow:
-		0 1px 0 rgba(255,255,255,0.04) inset,
-		0 0 0 1px rgba(201,162,39,0.07),
-		0 20px 60px rgba(0,0,0,0.65);
-}
-
-/* gold top accent stripe */
-#calendar::before {
-	content: '';
-	position: absolute;
-	top: 0; left: 0; right: 0;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent    0%,
-		var(--indigo)  20%,
-		var(--gold-bright) 50%,
-		var(--indigo)  80%,
-		transparent   100%
-	);
-	opacity: 0.55;
-	border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-	pointer-events: none;
-	z-index: 2;
+	background: var(--bg-surface);
+	border: 1px solid var(--border);
+	box-shadow: var(--shadow-sm);
 }
 
 /* ── Toolbar ── */
 .fc .fc-toolbar.fc-header-toolbar {
 	margin-bottom: 16px;
-	padding-bottom: 12px;
-	border-bottom: 1px solid var(--indigo-border);
-	position: relative;
-}
-
-/* toolbar bottom gradient line */
-.fc .fc-toolbar.fc-header-toolbar::after {
-	content: '';
-	position: absolute;
-	bottom: -1px; left: 0; right: 0;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		var(--indigo-dim) 0%,
-		rgba(201,162,39,0.3) 50%,
-		transparent 100%
-	);
+	padding-bottom: 14px;
+	border-bottom: 1px solid var(--border-light);
 }
 
 /* ── Title ── */
 .fc .fc-toolbar-title {
 	font-family: 'Playfair Display', serif;
-	font-size: 1.55em;
-	letter-spacing: 0.06em;
-	background: linear-gradient(
-		110deg,
-		var(--gold-bright) 0%,
-		#fff8cc 40%,
-		var(--indigo-bright) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	filter: drop-shadow(0 0 8px rgba(201,162,39,0.28));
+	font-size: 1.45em;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--text-primary);
 }
 
 /* ── Nav Buttons ── */
 .fc-button {
-	background: rgba(99,102,241,0.07) !important;
-	border: 1px solid var(--indigo-border) !important;
-	color: var(--indigo-bright) !important;
+	background: var(--bg-surface) !important;
+	border: 1px solid var(--border) !important;
+	color: var(--text-secondary) !important;
 	border-radius: var(--radius-sm) !important;
 	font-size: 0.8em !important;
-	letter-spacing: 0.05em !important;
-	transition: all 0.2s ease !important;
+	letter-spacing: 0.04em !important;
+	transition: all 0.16s ease !important;
 	font-weight: 500 !important;
+	box-shadow: var(--shadow-xs) !important;
 }
 
 .fc-button:hover {
-	background: rgba(99,102,241,0.14) !important;
-	border-color: rgba(99,102,241,0.45) !important;
-	color: #fff !important;
-	box-shadow: 0 0 14px var(--indigo-glow) !important;
+	background: #f5f6fa !important;
+	border-color: var(--slate-mid) !important;
+	color: var(--text-primary) !important;
+	box-shadow: var(--shadow-xs) !important;
 }
 
 .fc-button-active,
 .fc-button:not(:disabled):active {
-	background: rgba(201,162,39,0.14) !important;
-	border-color: var(--gold-border) !important;
-	color: var(--gold-bright) !important;
-	box-shadow: 0 0 14px var(--gold-glow) !important;
+	background: var(--slate-light) !important;
+	border-color: var(--slate) !important;
+	color: var(--slate) !important;
+	box-shadow: var(--shadow-xs) !important;
 }
 
 /* ── Grid ── */
 .fc-theme-standard td,
 .fc-theme-standard th {
-	border-color: rgba(99,102,241,0.08);
+	border-color: var(--border-light);
 }
 
 .fc-theme-standard .fc-scrollgrid {
-	border-color: rgba(99,102,241,0.1);
-	border-radius: var(--radius-md);
+	border-color: var(--border);
 }
 
 /* ── Day Header ── */
 .fc .fc-col-header-cell-cushion {
-	color: rgba(130, 140, 200, 0.65);
-	font-size: 0.73em;
-	letter-spacing: 0.13em;
+	color: var(--text-secondary);
+	font-size: 0.72em;
 	font-weight: 600;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	padding: 9px 4px;
 }
 
-.fc-day-sat .fc-col-header-cell-cushion { color: rgba(100, 160, 255, 0.65); }
-.fc-day-sun .fc-col-header-cell-cushion { color: rgba(255, 110, 130, 0.65); }
+.fc-day-sat .fc-col-header-cell-cushion { color: #4a7cc0; }
+.fc-day-sun .fc-col-header-cell-cushion { color: #c04a5a; }
 
 /* ── Day Cells ── */
 .fc .fc-daygrid-day-number {
 	color: var(--text-secondary);
 	font-size: 0.79em;
-	padding: 5px 10px;
-	transition: color 0.18s;
-	font-variant-numeric: tabular-nums;
 	font-weight: 500;
+	padding: 5px 10px;
+	transition: color 0.14s;
+	font-variant-numeric: tabular-nums;
 }
 
 .fc .fc-daygrid-day:hover .fc-daygrid-day-number {
-	color: var(--indigo-bright);
+	color: var(--text-primary);
 }
 
 .fc .fc-daygrid-day:hover {
-	background: rgba(99,102,241,0.04) !important;
+	background: #fafbff !important;
 }
 
 /* ── Today ── */
 .fc-day-today {
-	background: rgba(201,162,39,0.05) !important;
-	position: relative;
-}
-
-.fc-day-today::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	border: 1px solid rgba(201,162,39,0.38);
-	pointer-events: none;
-	animation: todayPulse 3.5s ease-in-out infinite;
+	background: #f7f8ff !important;
 }
 
 .fc-day-today .fc-daygrid-day-number {
-	color: var(--gold-bright) !important;
+	color: var(--slate) !important;
 	font-weight: 700;
-}
-
-@keyframes todayPulse {
-	0%, 100% { opacity: 1;   box-shadow: inset 0 0 12px rgba(201,162,39,0.08); }
-	50%       { opacity: 0.5; box-shadow: inset 0 0 22px rgba(201,162,39,0.15); }
+	background: var(--slate-light);
+	border-radius: 50%;
+	width: 26px;
+	height: 26px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 4px;
+	padding: 0;
+	line-height: 1;
 }
 
 /* ── Event Chips ── */
 .fc-event {
-	border-radius: 4px;
-	border: none !important;
+	border-radius: 4px !important;
 	font-size: 0.77em;
 	font-weight: 500;
-	letter-spacing: 0.015em;
-	transition: filter 0.18s, transform 0.14s;
-	position: relative;
-	overflow: hidden;
-}
-
-/* subtle top-left gloss */
-.fc-event::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		110deg,
-		rgba(255,255,255,0.09) 0%,
-		rgba(255,255,255,0.03) 40%,
-		transparent 65%
-	);
-	pointer-events: none;
+	letter-spacing: 0.01em;
+	transition: filter 0.14s, transform 0.12s;
 }
 
 .fc-event:hover {
-	filter: brightness(1.25);
-	transform: scaleX(1.015);
+	filter: brightness(0.94);
+	transform: scaleX(1.01);
 	z-index: 10;
 }
 
 /* ── Income chip ── */
 .income-chip {
-	background: linear-gradient(135deg, #0b4538 0%, #083028 100%) !important;
-	color: #3dffbb !important;
-	border-left: 2px solid #00ff9d !important;
-	box-shadow: 0 1px 6px rgba(0,255,155,0.14) !important;
+	background: #f0fdf4 !important;
+	color: #166534 !important;
+	border-left: 2px solid #22c55e !important;
+	box-shadow: none !important;
 }
 
 /* ── More link ── */
 .fc .fc-daygrid-more-link {
-	color: var(--indigo-bright);
-	font-size: 0.73em;
-	letter-spacing: 0.04em;
-	opacity: 0.75;
+	color: var(--slate);
+	font-size: 0.74em;
+	font-weight: 500;
+	letter-spacing: 0.03em;
 }
 
 .fc .fc-daygrid-more-link:hover {
-	opacity: 1;
+	color: var(--text-primary);
 	text-decoration: none;
 }
 
 /* ── Overflow Popover ── */
 .fc .fc-popover {
-	background: rgba(8,9,22,0.98) !important;
-	border: 1px solid var(--indigo-border) !important;
+	background: var(--bg-surface) !important;
+	border: 1px solid var(--border) !important;
 	border-radius: var(--radius-lg) !important;
-	box-shadow:
-		0 0 0 1px rgba(201,162,39,0.08),
-		0 12px 40px rgba(0,0,0,0.75) !important;
-	backdrop-filter: blur(20px);
+	box-shadow: var(--shadow-lg) !important;
 }
 
 .fc .fc-popover-header {
-	background: rgba(99,102,241,0.07) !important;
-	color: var(--indigo-bright) !important;
+	background: #f8f9fc !important;
+	color: var(--text-secondary) !important;
 	border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
 	font-size: 0.78em;
-	letter-spacing: 0.09em;
-	border-bottom: 1px solid var(--indigo-border) !important;
+	letter-spacing: 0.07em;
+	font-weight: 600;
+	border-bottom: 1px solid var(--border) !important;
 }
 
 .fc .fc-popover-body {

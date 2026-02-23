@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =====================================================
-   MODALS  —  Premium Glass
+   MODALS — White / Minimal
    ===================================================== */
 
 /* ── Overlay ── */
@@ -11,13 +11,13 @@
 	inset: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(4, 5, 14, 0.82);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
+	background: rgba(20, 22, 40, 0.4);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
-	animation: modalFadeIn 0.18s ease;
+	animation: modalFadeIn 0.16s ease;
 }
 
 @keyframes modalFadeIn {
@@ -28,46 +28,20 @@
 /* ── Panel ── */
 .modal-content {
 	position: relative;
-	background: linear-gradient(155deg, rgba(10,11,26,0.99) 0%, rgba(13,14,32,0.98) 100%);
-	backdrop-filter: blur(24px);
-	-webkit-backdrop-filter: blur(24px);
-	padding: 32px 30px 26px;
+	background: var(--bg-surface);
+	padding: 32px 28px 26px;
 	border-radius: var(--radius-xl);
 	width: 440px;
 	max-width: 92%;
 	max-height: 84vh;
 	overflow-y: auto;
-	border: 1px solid var(--indigo-border);
-	box-shadow:
-		0 0 0 1px rgba(201,162,39,0.07),
-		0 1px 0 rgba(255,255,255,0.05) inset,
-		0 20px 70px rgba(0,0,0,0.85);
-	animation: modalSlideIn 0.26s cubic-bezier(0.16, 1, 0.3, 1);
-
-	/* top accent */
-	border-top-color: rgba(201,162,39,0.42);
-}
-
-/* inner top stripe */
-.modal-content::before {
-	content: '';
-	position: absolute;
-	top: 0; left: 15%; right: 15%;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		var(--indigo),
-		var(--gold-bright),
-		var(--indigo),
-		transparent
-	);
-	opacity: 0.5;
-	pointer-events: none;
+	border: 1px solid var(--border);
+	box-shadow: var(--shadow-lg);
+	animation: modalSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalSlideIn {
-	from { transform: translateY(-14px) scale(0.98); opacity: 0; }
+	from { transform: translateY(-12px) scale(0.98); opacity: 0; }
 	to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
@@ -76,44 +50,42 @@
 .modal-content h3 {
 	font-family: 'Playfair Display', serif;
 	font-size: 1.18em;
-	letter-spacing: 0.06em;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--text-primary);
 	text-align: center;
 	margin: 0 0 22px;
-	background: linear-gradient(120deg, var(--gold-bright) 0%, #fffacc 50%, var(--indigo-bright) 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
 }
 
 .modal-content h4 {
-	font-size: 0.78em;
+	font-size: 0.74em;
 	font-weight: 600;
-	color: rgba(130, 140, 220, 0.7);
+	color: var(--text-secondary);
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	margin: 18px 0 10px;
+	margin: 16px 0 8px;
 	padding-bottom: 6px;
-	border-bottom: 1px solid var(--indigo-border);
+	border-bottom: 1px solid var(--border-light);
 }
 
 /* ── Paragraphs ── */
 .modal-content p {
-	color: rgba(180, 185, 220, 0.7);
+	color: var(--text-secondary);
 	font-size: 0.86em;
-	margin: 0 0 14px;
+	margin: 0 0 12px;
 }
 
 /* ── Close button ── */
 .modal-content .close {
 	position: absolute;
 	top: 14px;
-	right: 18px;
+	right: 16px;
 	font-size: 18px;
 	font-weight: 300;
-	color: var(--text-secondary);
+	color: var(--text-muted);
 	cursor: pointer;
 	line-height: 1;
-	transition: all 0.18s;
+	transition: all 0.16s;
 	width: 26px;
 	height: 26px;
 	display: flex;
@@ -124,18 +96,18 @@
 
 .modal-content .close:hover {
 	color: var(--text-primary);
-	background: rgba(99,102,241,0.12);
+	background: var(--border-light);
 }
 
 /* ── Labels ── */
 .modal-content label {
 	display: block;
-	font-size: 0.7em;
+	font-size: 0.72em;
 	font-weight: 600;
-	color: rgba(99, 102, 241, 0.65);
+	color: var(--text-secondary);
 	margin-bottom: 3px;
 	margin-top: 2px;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
 
@@ -149,13 +121,13 @@
 	padding: 9px 12px;
 	margin: 3px 0 14px;
 	border-radius: var(--radius-md);
-	border: 1px solid var(--indigo-border);
-	background: rgba(99,102,241,0.05);
+	border: 1px solid var(--border);
+	background: #fafbfd;
 	color: var(--text-primary);
 	-webkit-text-fill-color: var(--text-primary);
 	font-size: 14px;
 	font-family: 'Inter', sans-serif;
-	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	transition: border-color 0.16s, box-shadow 0.16s;
 	appearance: none;
 	-webkit-appearance: none;
 }
@@ -168,69 +140,69 @@
 .modal-content input[readonly] {
 	color: var(--text-secondary) !important;
 	-webkit-text-fill-color: var(--text-secondary) !important;
-	background: rgba(255,255,255,0.02) !important;
-	border-color: rgba(99,102,241,0.08) !important;
+	background: #f5f6fa !important;
+	border-color: var(--border-light) !important;
 	cursor: default;
 }
 
 /* select arrow */
 .modal-content select {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(99,102,241,0.5)'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237b82a0'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;
 	background-position: right 12px center;
 	padding-right: 30px;
 }
 
 .modal-content select option {
-	background: #0c0d22;
+	background: #ffffff;
 	color: var(--text-primary);
 }
 
 .modal-content input:focus,
 .modal-content select:focus {
 	outline: none;
-	border-color: rgba(99,102,241,0.5);
-	background: rgba(99,102,241,0.08);
-	box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+	border-color: var(--slate-mid);
+	background: #ffffff;
+	box-shadow: 0 0 0 3px rgba(74, 80, 112, 0.1);
 	-webkit-text-fill-color: var(--text-primary);
 }
 
 /* ── Divider ── */
 .modal-content hr {
 	border: none;
-	border-top: 1px solid var(--indigo-border);
+	border-top: 1px solid var(--border-light);
 	margin: 18px 0;
-	opacity: 0.7;
 }
 
 /* ── Buttons (base) ── */
 .modal-content button {
-	background: rgba(99,102,241,0.07);
-	color: var(--indigo-bright);
-	border: 1px solid var(--indigo-border);
+	background: #f5f6fa;
+	color: var(--text-secondary);
+	border: 1px solid var(--border);
 	border-radius: var(--radius-md);
 	padding: 9px 18px;
 	margin: 4px 4px 4px 0;
 	cursor: pointer;
 	font-size: 13px;
 	font-family: 'Inter', sans-serif;
-	transition: all 0.18s;
-	letter-spacing: 0.03em;
+	font-weight: 500;
+	transition: all 0.16s;
+	letter-spacing: 0.02em;
 }
 
 .modal-content button:hover {
-	background: rgba(99,102,241,0.14);
-	border-color: rgba(99,102,241,0.42);
-	color: #fff;
-	box-shadow: 0 0 14px var(--indigo-glow);
+	background: var(--slate-light);
+	border-color: var(--slate-mid);
+	color: var(--text-primary);
 	transform: translateY(-1px);
+	box-shadow: var(--shadow-xs);
 }
 
 .modal-content button:active {
 	transform: translateY(0);
 }
 
-/* ── Primary (submit / record) button ── */
+/* ── Primary (submit) button ── */
 .record-btn,
 .submit-btn,
 .modal-content button[type="submit"][name="buttonId"][value="e003"],
@@ -246,15 +218,11 @@
 .modal-content button[type="submit"][name="buttonId"][value="e020"],
 .modal-content button[type="submit"][name="buttonId"][value="e022"],
 .modal-content button[type="submit"][name="buttonId"][value="e023"] {
-	background: linear-gradient(135deg, rgba(201,162,39,0.7) 0%, rgba(155,115,25,0.8) 100%);
-	color: #06070f;
-	border: 1px solid rgba(201,162,39,0.45);
-	border-radius: var(--radius-md);
-	padding: 9px 20px;
-	font-weight: 700;
-	font-size: 13px;
-	letter-spacing: 0.05em;
-	box-shadow: none;
+	background: var(--text-primary);
+	color: #ffffff;
+	border: 1px solid var(--text-primary);
+	font-weight: 600;
+	letter-spacing: 0.04em;
 }
 
 .record-btn:hover,
@@ -272,44 +240,42 @@
 .modal-content button[type="submit"][name="buttonId"][value="e020"]:hover,
 .modal-content button[type="submit"][name="buttonId"][value="e022"]:hover,
 .modal-content button[type="submit"][name="buttonId"][value="e023"]:hover {
-	background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-base) 100%);
-	border-color: var(--gold-bright);
-	box-shadow: 0 4px 20px rgba(201,162,39,0.3);
-	transform: translateY(-1px);
-	color: #05050f;
+	background: var(--slate);
+	border-color: var(--slate);
+	box-shadow: var(--shadow-sm);
+	color: #ffffff;
 }
 
 /* ── Danger (delete) button ── */
 .modal-content button[name="buttonId"][value="e008"],
 .modal-content button[name="buttonId"][value="e010"],
 .modal-content button[name="buttonId"][value="e013"] {
-	background: rgba(220,50,70,0.07);
-	color: rgba(255,100,115,0.85);
-	border: 1px solid rgba(220,50,70,0.2);
+	background: #fff4f5;
+	color: #be3a46;
+	border: 1px solid #f0c8cc;
 }
 
 .modal-content button[name="buttonId"][value="e008"]:hover,
 .modal-content button[name="buttonId"][value="e010"]:hover,
 .modal-content button[name="buttonId"][value="e013"]:hover {
-	background: rgba(220,50,70,0.14);
-	border-color: rgba(220,50,70,0.45);
-	color: #ffb0ba;
-	box-shadow: 0 0 14px rgba(220,50,70,0.18);
+	background: #ffe8ea;
+	border-color: #e09098;
+	color: #991b24;
+	box-shadow: none;
 }
 
 /* ── Cancel button ── */
 .cancel-btn,
 .modal-content button.cancel-btn {
-	background: rgba(255,255,255,0.03);
+	background: transparent;
 	color: var(--text-secondary);
-	border: 1px solid rgba(255,255,255,0.08);
+	border: 1px solid var(--border);
 }
 
 .cancel-btn:hover,
 .modal-content button.cancel-btn:hover {
-	background: rgba(255,255,255,0.07);
+	background: #f5f6fa;
 	color: var(--text-primary);
-	border-color: rgba(255,255,255,0.16);
 	box-shadow: none;
 }
 
@@ -323,30 +289,30 @@
 .modal-content th,
 .modal-content td {
 	padding: 8px 10px;
-	border: 1px solid rgba(99,102,241,0.1);
+	border: 1px solid var(--border-light);
 	text-align: left;
 	color: var(--text-primary);
 	font-size: 13px;
 }
 
 .modal-content th {
-	background: rgba(99,102,241,0.07);
-	color: rgba(130,140,220,0.7);
+	background: #f8f9fc;
+	color: var(--text-secondary);
 	font-size: 0.72em;
 	font-weight: 600;
-	letter-spacing: 0.09em;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
 
 .modal-content tr:hover td {
-	background: rgba(99,102,241,0.04);
+	background: #fafbff;
 }
 
 .modal-content input[type="checkbox"] {
 	display: block;
 	margin: 0 auto;
 	cursor: pointer;
-	accent-color: var(--indigo);
+	accent-color: var(--slate);
 }
 
 /* number input inside table */

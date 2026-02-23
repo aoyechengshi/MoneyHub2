@@ -4,39 +4,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* =====================================================
-   DESIGN TOKENS
+   DESIGN TOKENS  — White / Minimal
    ===================================================== */
 :root {
 	/* ── Backgrounds ── */
-	--bg-deep:     #06070f;
-	--bg-surface:  #090b18;
-	--bg-elevated: #0d1024;
-	--bg-glass:    rgba(9, 11, 24, 0.88);
+	--bg-deep:     #f0f2f7;
+	--bg-surface:  #ffffff;
+	--bg-elevated: #ffffff;
+	--bg-glass:    rgba(255, 255, 255, 0.96);
 
-	/* ── Gold  (premium / financial) ── */
-	--gold-bright: #f0c84a;
-	--gold-base:   #c9a227;
-	--gold-dim:    rgba(201, 162, 39, 0.45);
-	--gold-glow:   rgba(201, 162, 39, 0.16);
-	--gold-border: rgba(201, 162, 39, 0.2);
+	/* ── Borders ── */
+	--border:       #e0e3ef;
+	--border-light: #eff0f8;
 
-	/* ── Indigo  (primary brand accent) ── */
-	--indigo:        #6366f1;
-	--indigo-bright: #818cf8;
-	--indigo-dim:    rgba(99, 102, 241, 0.4);
-	--indigo-glow:   rgba(99, 102, 241, 0.14);
-	--indigo-border: rgba(99, 102, 241, 0.18);
+	/* ── Slate (single neutral accent) ── */
+	--slate:        #4a5070;
+	--slate-mid:    #7b82a0;
+	--slate-light:  rgba(74, 80, 112, 0.12);
+	--slate-border: #e0e3ef;
+
+	/* ── Legacy compat — remapped to neutral ── */
+	--gold-bright: #3a3d5c;
+	--gold-base:   #4a5070;
+	--gold-dim:    rgba(74, 80, 112, 0.3);
+	--gold-glow:   rgba(0, 0, 0, 0.04);
+	--gold-border: #e0e3ef;
+
+	--indigo:        #4a5070;
+	--indigo-bright: #3a3d5c;
+	--indigo-dim:    rgba(74, 80, 112, 0.25);
+	--indigo-glow:   rgba(0, 0, 0, 0.04);
+	--indigo-border: #e0e3ef;
 
 	/* ── Text ── */
-	--text-primary:   #e2e5f4;
-	--text-secondary: #525878;
-	--text-muted:     #252840;
+	--text-primary:   #1a1c2e;
+	--text-secondary: #7b82a0;
+	--text-muted:     #c4c8dc;
+
+	/* ── Shadows ── */
+	--shadow-xs: 0 1px 3px  rgba(0, 0, 0, 0.06);
+	--shadow-sm: 0 2px 8px  rgba(0, 0, 0, 0.07);
+	--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+	--shadow-lg: 0 8px 36px rgba(0, 0, 0, 0.09);
 
 	/* ── Radius ── */
 	--radius-sm: 6px;
 	--radius-md: 10px;
 	--radius-lg: 14px;
-	--radius-xl: 20px;
+	--radius-xl: 18px;
 }
 
 *, *::before, *::after {
@@ -47,14 +62,7 @@ body {
 	font-family: 'Inter', 'Lato', sans-serif;
 	font-size: 14px;
 	line-height: 1.6;
-
 	background: var(--bg-deep);
-	background-image:
-		radial-gradient(ellipse 130% 55% at -5% 5%,  rgba(99, 102, 241, 0.09) 0%, transparent 55%),
-		radial-gradient(ellipse 80%  45% at 108% 0%,  rgba(201, 162, 39, 0.06) 0%, transparent 48%),
-		radial-gradient(ellipse 70%  70% at 50%  108%, rgba(40, 35, 110, 0.12) 0%, transparent 62%);
-	background-attachment: fixed;
-
 	color: var(--text-primary);
 	margin: 0;
 	padding: 0;
@@ -67,9 +75,9 @@ body {
 	height: 140px;
 	border-radius: 50%;
 	object-fit: contain;
-	background: rgba(255, 255, 255, 0.04);
+	background: #f5f6fa;
 	padding: 10px;
 	display: block;
 	margin: 0 auto 24px;
-	box-shadow: 0 0 40px var(--gold-glow), 0 0 0 1px var(--gold-border);
+	box-shadow: 0 0 0 1px var(--border), var(--shadow-md);
 }

@@ -7,9 +7,9 @@
 	inset: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(0, 0, 0, 0.72);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
+	background: rgba(0, 0, 0, 0.76);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
@@ -23,33 +23,37 @@
 
 /* ===== モーダルコンテンツ ===== */
 .modal-content {
-	background: rgba(11, 11, 26, 0.96);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
-	padding: 32px;
-	border-radius: 16px;
-	width: 420px;
+	background: linear-gradient(160deg, rgba(10,9,28,0.98) 0%, rgba(14,11,34,0.97) 100%);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	padding: 34px 32px 28px;
+	border-radius: 18px;
+	width: 440px;
 	max-width: 92%;
 	max-height: 82vh;
 	overflow-y: auto;
-	border: 1px solid var(--gold-border);
+	border: 1px solid rgba(201, 162, 39, 0.25);
 	box-shadow:
-		0 12px 60px rgba(0, 0, 0, 0.75),
-		0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-		0 0 50px rgba(201, 162, 39, 0.05);
+		0 0 0 1px rgba(0, 210, 255, 0.07),
+		0 14px 70px rgba(0, 0, 0, 0.82),
+		inset 0 1px 0 rgba(255, 255, 255, 0.05),
+		0 0 50px rgba(201, 162, 39, 0.04);
 	position: relative;
 	animation: modalSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+
+	/* gold top accent */
+	border-top: 1px solid rgba(201, 162, 39, 0.5);
 }
 
 @keyframes modalSlideIn {
-	from { transform: translateY(-18px) scale(0.98); opacity: 0; }
+	from { transform: translateY(-16px) scale(0.98); opacity: 0; }
 	to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
-/* モーダルタイトル */
+/* ---------- タイトル ---------- */
 .modal-content h2,
 .modal-content h3 {
-	background: linear-gradient(135deg, var(--gold-bright), var(--gold-base));
+	background: linear-gradient(120deg, var(--gold-bright) 0%, #fff8c0 50%, var(--gold-base) 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
@@ -57,17 +61,49 @@
 	margin-top: 0;
 	margin-bottom: 22px;
 	text-align: center;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.06em;
+	font-size: 1.2em;
+	filter: drop-shadow(0 0 6px rgba(201,162,39,0.25));
 }
 
-/* 閉じるボタン */
+/* h4 (フォーム内小見出し) */
+.modal-content h4 {
+	color: rgba(0, 210, 255, 0.8);
+	font-size: 0.92em;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	margin: 16px 0 10px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid rgba(0, 210, 255, 0.12);
+}
+
+/* ---------- テキスト・段落 ---------- */
+.modal-content p {
+	color: rgba(200, 200, 220, 0.75);
+	font-size: 0.88em;
+	margin: 0 0 14px;
+	letter-spacing: 0.02em;
+}
+
+/* ---------- ラベル ---------- */
+.modal-content label {
+	display: block;
+	font-size: 0.72em;
+	color: rgba(0, 210, 255, 0.6);
+	margin-bottom: 3px;
+	margin-top: 2px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+/* ---------- 閉じるボタン ---------- */
 .modal-content .close {
 	position: absolute;
 	top: 16px;
 	right: 20px;
 	font-size: 20px;
 	font-weight: 300;
-	color: var(--text-secondary);
+	color: rgba(200, 200, 220, 0.4);
 	cursor: pointer;
 	line-height: 1;
 	transition: all 0.2s;
@@ -81,28 +117,93 @@
 
 .modal-content .close:hover {
 	color: var(--gold-bright);
-	background: var(--gold-glow);
+	background: rgba(201, 162, 39, 0.12);
 }
 
-/* モーダル内ボタン */
-.modal-content button {
-	background: rgba(201, 162, 39, 0.1);
-	color: var(--text-primary);
-	border: 1px solid var(--gold-border);
+/* ---------- 入力欄・セレクト ---------- */
+.modal-content input[type="number"],
+.modal-content input[type="date"],
+.modal-content input[type="month"],
+.modal-content input[type="text"],
+.modal-content select {
+	width: 100%;
+	padding: 9px 12px;
+	margin: 4px 0 14px;
 	border-radius: 8px;
-	padding: 10px 18px;
-	margin: 6px 4px 6px 0;
+	border: 1px solid rgba(201, 162, 39, 0.2);
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--text-primary);
+	font-size: 14px;
+	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	/* ensure browser doesn't override text color */
+	-webkit-text-fill-color: var(--text-primary);
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+/* テキスト入力 height 統一 */
+.modal-content input[type="text"] {
+	height: 42px;
+}
+
+/* readonly フィールド (薄め) */
+.modal-content input[readonly] {
+	color: rgba(200, 200, 220, 0.45) !important;
+	-webkit-text-fill-color: rgba(200, 200, 220, 0.45) !important;
+	background: rgba(255, 255, 255, 0.02) !important;
+	border-color: rgba(201, 162, 39, 0.1) !important;
+	cursor: default;
+}
+
+/* select カスタム矢印 */
+.modal-content select {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(201,162,39,0.55)'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	padding-right: 32px;
+}
+
+/* option のカラー修正 (ブラウザ依存対策) */
+.modal-content select option {
+	background: #0e0b22;
+	color: var(--text-primary);
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+	outline: none;
+	border-color: rgba(201, 162, 39, 0.55);
+	background: rgba(201, 162, 39, 0.04);
+	box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1), 0 0 20px rgba(201, 162, 39, 0.07);
+	-webkit-text-fill-color: var(--text-primary);
+}
+
+/* ---------- 区切り線 ---------- */
+.modal-content hr {
+	border: none;
+	border-top: 1px solid rgba(201, 162, 39, 0.15);
+	margin: 18px 0;
+}
+
+/* ---------- 通常ボタン ---------- */
+.modal-content button {
+	background: rgba(0, 210, 255, 0.06);
+	color: rgba(0, 210, 255, 0.85);
+	border: 1px solid rgba(0, 210, 255, 0.22);
+	border-radius: 8px;
+	padding: 9px 18px;
+	margin: 5px 4px 5px 0;
 	cursor: pointer;
 	font-size: 13px;
 	transition: all 0.2s;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.03em;
 }
 
 .modal-content button:hover {
-	background: rgba(201, 162, 39, 0.2);
-	border-color: var(--gold-base);
-	color: var(--gold-bright);
-	box-shadow: 0 0 14px var(--gold-glow);
+	background: rgba(0, 210, 255, 0.13);
+	border-color: rgba(0, 210, 255, 0.5);
+	color: #e8f8ff;
+	box-shadow: 0 0 16px rgba(0, 210, 255, 0.2);
 	transform: translateY(-1px);
 }
 
@@ -110,53 +211,54 @@
 	transform: translateY(0);
 }
 
-/* Step0・Step1のボタン横並び */
-#step0,
-#expenseForm {
-	display: flex;
-	justify-content: center;
-	gap: 12px;
-	margin-bottom: 12px;
+/* ---------- 登録(submit)ボタン ---------- */
+.record-btn,
+.modal-content button[type="submit"]:not([name="buttonId"][value="e008"]):not([name="buttonId"][value="e010"]):not([name="buttonId"][value="e013"]) {
+	background: linear-gradient(135deg, rgba(201,162,39,0.75) 0%, rgba(160,112,32,0.85) 100%);
+	color: #0e0b22;
+	border: 1px solid rgba(201,162,39,0.55);
+	border-radius: 9px;
+	padding: 10px 20px;
+	font-weight: 700;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	transition: all 0.22s;
 }
 
-/* 入力欄 */
-.modal-content input[type="number"],
-.modal-content input[type="date"],
-.modal-content input[type="month"],
-.modal-content select {
-	width: 100%;
-	padding: 9px 12px;
-	margin: 6px 0 12px 0;
+.record-btn:hover,
+.modal-content button[type="submit"]:not([name="buttonId"][value="e008"]):not([name="buttonId"][value="e010"]):not([name="buttonId"][value="e013"]):hover {
+	background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-base) 100%);
+	border-color: var(--gold-bright);
+	box-shadow: 0 4px 22px rgba(201,162,39,0.35);
+	transform: translateY(-1px);
+	color: #05050f;
+}
+
+/* ---------- 削除ボタン ---------- */
+.modal-content button[name="buttonId"][value="e008"],
+.modal-content button[name="buttonId"][value="e010"],
+.modal-content button[name="buttonId"][value="e013"] {
+	background: rgba(255, 50, 80, 0.08);
+	color: rgba(255, 100, 120, 0.85);
+	border: 1px solid rgba(255, 60, 90, 0.25);
 	border-radius: 8px;
-	border: 1px solid rgba(201, 162, 39, 0.2);
-	background: rgba(255, 255, 255, 0.04);
-	color: var(--text-primary);
-	font-size: 14px;
-	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	padding: 9px 18px;
+	font-size: 13px;
+	letter-spacing: 0.03em;
 }
 
-.modal-content input[type="text"] {
-	width: 100%;
-	padding: 9px 12px;
-	height: 42px;
-	margin: 6px 0 12px 0;
-	border-radius: 8px;
-	border: 1px solid rgba(201, 162, 39, 0.2);
-	background: rgba(255, 255, 255, 0.04);
-	color: var(--text-primary);
-	font-size: 14px;
-	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+.modal-content button[name="buttonId"][value="e008"]:hover,
+.modal-content button[name="buttonId"][value="e010"]:hover,
+.modal-content button[name="buttonId"][value="e013"]:hover {
+	background: rgba(255, 50, 80, 0.18);
+	border-color: rgba(255, 60, 90, 0.55);
+	color: #ffb0bc;
+	box-shadow: 0 0 16px rgba(255, 50, 80, 0.2);
+	transform: translateY(-1px);
 }
 
-.modal-content input:focus,
-.modal-content select:focus {
-	outline: none;
-	border-color: var(--gold-base);
-	background: rgba(201, 162, 39, 0.04);
-	box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.12), 0 0 20px rgba(201, 162, 39, 0.08);
-}
-
-/* 固定費テーブル */
+/* ---------- テーブル ---------- */
 .modal-content table {
 	width: 100%;
 	border-collapse: collapse;
@@ -167,17 +269,23 @@
 .modal-content th,
 .modal-content td {
 	padding: 8px 10px;
-	border: 1px solid rgba(201, 162, 39, 0.15);
+	border: 1px solid rgba(201, 162, 39, 0.1);
 	text-align: left;
 	color: var(--text-primary);
 	font-size: 13px;
 }
 
 .modal-content th {
-	background: rgba(201, 162, 39, 0.1);
-	color: var(--gold-base);
+	background: rgba(201, 162, 39, 0.07);
+	color: rgba(201, 162, 39, 0.75);
 	font-weight: 500;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.04em;
+	font-size: 0.78em;
+	text-transform: uppercase;
+}
+
+.modal-content tr:hover td {
+	background: rgba(0, 210, 255, 0.03);
 }
 
 .modal-content input[type="checkbox"] {
@@ -187,45 +295,49 @@
 	accent-color: var(--gold-base);
 }
 
+/* ---------- テーブル内 number input (変動費) ---------- */
+.modal-content td input[type="number"] {
+	width: 100px;
+	margin: 0;
+	padding: 5px 8px;
+	font-size: 13px;
+}
+
+/* ---------- 固定費一覧スクロール ---------- */
 #fixedForm {
 	max-height: 400px;
 	overflow-y: auto;
 	padding-right: 6px;
 }
 
-/* 登録ボタン */
-.record-btn {
-	background: linear-gradient(135deg, var(--gold-base), #a07020);
-	color: var(--bg-deep);
-	border: none;
-	border-radius: 10px;
-	padding: 11px 20px;
-	font-weight: 700;
-	cursor: pointer;
-	font-size: 14px;
-	letter-spacing: 0.04em;
-	transition: all 0.25s;
+/* ---------- ステップ選択ボタンエリア ---------- */
+#step0,
+#expenseForm {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-bottom: 12px;
 }
 
-.record-btn:hover {
-	background: linear-gradient(135deg, var(--gold-bright), var(--gold-base));
-	box-shadow: 0 6px 24px rgba(201, 162, 39, 0.38);
-	transform: translateY(-1px);
-}
-
-/* モーダルボタンエリア */
+/* ---------- ボタンエリア ---------- */
 .modal-buttons {
 	display: flex;
 	gap: 10px;
 	margin-top: 16px;
 }
 
-/* ラベル */
-.modal-content label {
-	display: block;
-	font-size: 12px;
-	color: var(--text-secondary);
-	margin-bottom: 2px;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
+/* ---------- キャンセルボタン ---------- */
+.cancel-btn,
+.modal-content button.cancel-btn {
+	background: rgba(255, 255, 255, 0.04);
+	color: rgba(200, 200, 220, 0.55);
+	border: 1px solid rgba(200, 200, 220, 0.14);
+}
+
+.cancel-btn:hover,
+.modal-content button.cancel-btn:hover {
+	background: rgba(255, 255, 255, 0.08);
+	color: rgba(200, 200, 220, 0.85);
+	border-color: rgba(200, 200, 220, 0.3);
+	box-shadow: none;
 }

@@ -61,11 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
 
-    function calcCalendarHeight() {
-        // ヘッダー(66px) + 上下margin(16px×2) + 上下padding(25px×2) = 148px
-        return window.innerHeight - 148;
-    }
-
     function positionTooltip(e, tooltip) {
         const pad = 14;
         let x = e.clientX + pad;
@@ -127,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initialView: 'dayGridMonth',
         fixedWeekCount: false,
         events: allEvents,
-        height: calcCalendarHeight(),
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -184,10 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     calendar.render();
-
-    window.addEventListener('resize', function () {
-        calendar.setOption('height', calcCalendarHeight());
-    });
 
     /* ===== モーダル閉じる処理 ===== */
     const modal = document.getElementById('recordModal');

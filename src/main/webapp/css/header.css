@@ -144,7 +144,9 @@ header .logo {
 	position: relative;
 	flex: 1;
 	min-width: 0;
+	height: calc(100vh - 66px);
 	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 /* 設定サブカテゴリ */

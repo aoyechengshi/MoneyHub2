@@ -54,26 +54,13 @@
 			</c:choose>
 		</main>
 	</div>
+	<div id="fcTooltip" class="fc-event-tooltip"></div>
 	<jsp:include page="Modal.jsp" />
 	<script>
 document.addEventListener('DOMContentLoaded', function () {
 
     const calendarEl = document.getElementById('calendar');
     if (!calendarEl) return;
-
-    function positionTooltip(e, tooltip) {
-        const pad = 14;
-        let x = e.clientX + pad;
-        let y = e.clientY + pad;
-        if (x + tooltip.offsetWidth > window.innerWidth - pad) {
-            x = e.clientX - tooltip.offsetWidth - pad;
-        }
-        if (y + tooltip.offsetHeight > window.innerHeight - pad) {
-            y = e.clientY - tooltip.offsetHeight - pad;
-        }
-        tooltip.style.left = x + 'px';
-        tooltip.style.top  = y + 'px';
-    }
 
     /* ===== 収入イベント ===== */
     const incomeEvents = [
@@ -167,8 +154,27 @@ document.addEventListener('DOMContentLoaded', function () {
             let content = info.event.title;
             if (memo.trim()) content += '\nメモ: ' + memo;
             tooltip.textContent = content;
+            tooltip.classList.remove('below');
             tooltip.style.display = 'block';
-            positionTooltip(info.jsEvent, tooltip);
+
+            const rect = info.el.getBoundingClientRect();
+            const ttW = tooltip.offsetWidth;
+            const ttH = tooltip.offsetHeight;
+            const gap = 10;
+
+            // イベントの中心に横揃え（画面端クランプ）
+            let left = rect.left + rect.width / 2 - ttW / 2;
+            left = Math.max(4, Math.min(left, window.innerWidth - ttW - 4));
+
+            // 上に表示できなければ下に
+            let top = rect.top - ttH - gap;
+            if (top < 4) {
+                top = rect.bottom + gap;
+                tooltip.classList.add('below');
+            }
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top  = top + 'px';
         },
 
         eventMouseLeave: function () {

@@ -57,21 +57,56 @@
 	font-weight: 600;
 }
 
-/* ===== イベントホバーツールチップ ===== */
+/* ===== イベントホバー吹き出し ===== */
 .fc-event-tooltip {
 	position: fixed;
 	background: #2a2a44;
 	border: 1px solid rgba(230, 192, 123, 0.5);
 	color: #f5f5f5;
-	padding: 8px 12px;
+	padding: 10px 14px;
 	border-radius: 8px;
 	font-size: 13px;
 	max-width: 240px;
 	pointer-events: none;
-	z-index: 9998;
+	z-index: 9999;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
 	line-height: 1.6;
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	display: none;
+}
+
+/* 下向き矢印（イベントの上に表示するとき）：ボーダー層 */
+.fc-event-tooltip::before {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 8px solid transparent;
+	border-top-color: rgba(230, 192, 123, 0.5);
+}
+/* 下向き矢印：塗り層 */
+.fc-event-tooltip::after {
+	content: '';
+	position: absolute;
+	top: calc(100% - 1px);
+	left: 50%;
+	transform: translateX(-50%);
+	border: 7px solid transparent;
+	border-top-color: #2a2a44;
+}
+
+/* 上向き矢印（イベントの下に表示するとき）*/
+.fc-event-tooltip.below::before {
+	top: auto;
+	bottom: 100%;
+	border-top-color: transparent;
+	border-bottom-color: rgba(230, 192, 123, 0.5);
+}
+.fc-event-tooltip.below::after {
+	top: auto;
+	bottom: calc(100% - 1px);
+	border-top-color: transparent;
+	border-bottom-color: #2a2a44;
 }

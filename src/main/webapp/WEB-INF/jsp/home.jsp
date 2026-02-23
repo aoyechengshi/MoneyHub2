@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         fixedWeekCount: false,
+        aspectRatio: 1.8,
         events: allEvents,
         headerToolbar: {
             left: 'prev,next today',
@@ -160,11 +161,13 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         eventDidMount: function (info) {
-            const memo = info.event.extendedProps.memo || info.event.extendedProps.note || '';
-            if (!memo.trim()) return;
             const tooltip = document.getElementById('fcTooltip');
+            if (!tooltip) return;
+            const memo = info.event.extendedProps.memo || info.event.extendedProps.note || '';
+            let content = info.event.title;
+            if (memo.trim()) content += '\nメモ: ' + memo;
             info.el.addEventListener('mouseenter', function (e) {
-                tooltip.textContent = memo;
+                tooltip.textContent = content;
                 tooltip.style.display = 'block';
                 positionTooltip(e, tooltip);
             });

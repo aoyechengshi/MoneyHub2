@@ -4,48 +4,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* =====================================================
-   DESIGN TOKENS  — White / Minimal
+   DESIGN TOKENS  — Professional Dark
    ===================================================== */
 :root {
 	/* ── Backgrounds ── */
-	--bg-deep:     #f0f2f7;
-	--bg-surface:  #ffffff;
-	--bg-elevated: #ffffff;
-	--bg-glass:    rgba(255, 255, 255, 0.96);
+	--bg-deep:     #0d0f1a;
+	--bg-surface:  #111520;
+	--bg-elevated: #161b28;
+	--bg-card:     #1b2032;
+	--bg-glass:    rgba(17, 21, 32, 0.96);
 
 	/* ── Borders ── */
-	--border:       #e0e3ef;
-	--border-light: #eff0f8;
+	--border:     rgba(255, 255, 255, 0.07);
+	--border-mid: rgba(255, 255, 255, 0.11);
 
-	/* ── Slate (single neutral accent) ── */
-	--slate:        #4a5070;
-	--slate-mid:    #7b82a0;
-	--slate-light:  rgba(74, 80, 112, 0.12);
-	--slate-border: #e0e3ef;
+	/* ── Accent — muted slate-indigo ── */
+	--accent:        #7c85d0;
+	--accent-bright: #a0a8e0;
+	--accent-subtle: rgba(124, 133, 208, 0.1);
+	--accent-border: rgba(124, 133, 208, 0.22);
 
-	/* ── Legacy compat — remapped to neutral ── */
-	--gold-bright: #3a3d5c;
-	--gold-base:   #4a5070;
-	--gold-dim:    rgba(74, 80, 112, 0.3);
-	--gold-glow:   rgba(0, 0, 0, 0.04);
-	--gold-border: #e0e3ef;
+	/* ── Gold — title & today only ── */
+	--gold-bright: #f0c84a;
+	--gold-base:   #c9a227;
+	--gold-dim:    rgba(201, 162, 39, 0.4);
+	--gold-glow:   rgba(201, 162, 39, 0.12);
+	--gold-border: rgba(201, 162, 39, 0.2);
 
-	--indigo:        #4a5070;
-	--indigo-bright: #3a3d5c;
-	--indigo-dim:    rgba(74, 80, 112, 0.25);
-	--indigo-glow:   rgba(0, 0, 0, 0.04);
-	--indigo-border: #e0e3ef;
+	/* ── Legacy compat ── */
+	--indigo:        var(--accent);
+	--indigo-bright: var(--accent-bright);
+	--indigo-dim:    rgba(124, 133, 208, 0.3);
+	--indigo-glow:   rgba(124, 133, 208, 0.08);
+	--indigo-border: var(--accent-border);
 
 	/* ── Text ── */
-	--text-primary:   #1a1c2e;
-	--text-secondary: #7b82a0;
-	--text-muted:     #c4c8dc;
-
-	/* ── Shadows ── */
-	--shadow-xs: 0 1px 3px  rgba(0, 0, 0, 0.06);
-	--shadow-sm: 0 2px 8px  rgba(0, 0, 0, 0.07);
-	--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
-	--shadow-lg: 0 8px 36px rgba(0, 0, 0, 0.09);
+	--text-primary:   #dde0ec;
+	--text-secondary: #58607a;
+	--text-muted:     #2c3048;
 
 	/* ── Radius ── */
 	--radius-sm: 6px;
@@ -75,9 +71,9 @@ body {
 	height: 140px;
 	border-radius: 50%;
 	object-fit: contain;
-	background: #f5f6fa;
+	background: rgba(255, 255, 255, 0.03);
 	padding: 10px;
 	display: block;
 	margin: 0 auto 24px;
-	box-shadow: 0 0 0 1px var(--border), var(--shadow-md);
+	box-shadow: 0 0 0 1px var(--border), 0 4px 24px rgba(0, 0, 0, 0.5);
 }

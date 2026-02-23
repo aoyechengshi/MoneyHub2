@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =====================================================
-   CALENDAR — White / Minimal
+   CALENDAR — Professional Dark
    ===================================================== */
 
 /* ── Container ── */
@@ -15,62 +15,59 @@
 	box-sizing: border-box;
 
 	background: var(--bg-surface);
-	border: 1px solid var(--border);
-	box-shadow: var(--shadow-sm);
+	border: 1px solid var(--border-mid);
+	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ── Toolbar ── */
 .fc .fc-toolbar.fc-header-toolbar {
 	margin-bottom: 16px;
 	padding-bottom: 14px;
-	border-bottom: 1px solid var(--border-light);
+	border-bottom: 1px solid var(--border);
 }
 
 /* ── Title ── */
 .fc .fc-toolbar-title {
 	font-family: 'Playfair Display', serif;
-	font-size: 1.45em;
+	font-size: 1.5em;
 	font-weight: 700;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.05em;
 	color: var(--text-primary);
 }
 
 /* ── Nav Buttons ── */
 .fc-button {
-	background: var(--bg-surface) !important;
-	border: 1px solid var(--border) !important;
+	background: var(--bg-elevated) !important;
+	border: 1px solid var(--border-mid) !important;
 	color: var(--text-secondary) !important;
 	border-radius: var(--radius-sm) !important;
 	font-size: 0.8em !important;
-	letter-spacing: 0.04em !important;
-	transition: all 0.16s ease !important;
 	font-weight: 500 !important;
-	box-shadow: var(--shadow-xs) !important;
+	letter-spacing: 0.04em !important;
+	transition: background 0.16s, border-color 0.16s, color 0.16s !important;
 }
 
 .fc-button:hover {
-	background: #f5f6fa !important;
-	border-color: var(--slate-mid) !important;
-	color: var(--text-primary) !important;
-	box-shadow: var(--shadow-xs) !important;
+	background: var(--bg-card) !important;
+	border-color: var(--accent-border) !important;
+	color: var(--accent-bright) !important;
 }
 
 .fc-button-active,
 .fc-button:not(:disabled):active {
-	background: var(--slate-light) !important;
-	border-color: var(--slate) !important;
-	color: var(--slate) !important;
-	box-shadow: var(--shadow-xs) !important;
+	background: var(--accent-subtle) !important;
+	border-color: var(--accent-border) !important;
+	color: var(--accent-bright) !important;
 }
 
 /* ── Grid ── */
 .fc-theme-standard td,
 .fc-theme-standard th {
-	border-color: var(--border-light);
+	border-color: var(--border);
 }
 
 .fc-theme-standard .fc-scrollgrid {
-	border-color: var(--border);
+	border-color: var(--border-mid);
 }
 
 /* ── Day Header ── */
@@ -83,8 +80,8 @@
 	padding: 9px 4px;
 }
 
-.fc-day-sat .fc-col-header-cell-cushion { color: #4a7cc0; }
-.fc-day-sun .fc-col-header-cell-cushion { color: #c04a5a; }
+.fc-day-sat .fc-col-header-cell-cushion { color: rgba(120, 160, 220, 0.65); }
+.fc-day-sun .fc-col-header-cell-cushion { color: rgba(220, 110, 120, 0.65); }
 
 /* ── Day Cells ── */
 .fc .fc-daygrid-day-number {
@@ -101,27 +98,21 @@
 }
 
 .fc .fc-daygrid-day:hover {
-	background: #fafbff !important;
+	background: rgba(255, 255, 255, 0.02) !important;
 }
 
 /* ── Today ── */
 .fc-day-today {
-	background: #f7f8ff !important;
+	background: rgba(201, 162, 39, 0.05) !important;
+}
+
+.fc-day-today .fc-daygrid-day-top {
+	border-top: 2px solid rgba(201, 162, 39, 0.45);
 }
 
 .fc-day-today .fc-daygrid-day-number {
-	color: var(--slate) !important;
+	color: var(--gold-bright) !important;
 	font-weight: 700;
-	background: var(--slate-light);
-	border-radius: 50%;
-	width: 26px;
-	height: 26px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 4px;
-	padding: 0;
-	line-height: 1;
 }
 
 /* ── Event Chips ── */
@@ -130,46 +121,44 @@
 	font-size: 0.77em;
 	font-weight: 500;
 	letter-spacing: 0.01em;
-	transition: filter 0.14s, transform 0.12s;
+	transition: opacity 0.14s;
+	border: none !important;
 }
 
 .fc-event:hover {
-	filter: brightness(0.94);
-	transform: scaleX(1.01);
+	opacity: 0.85;
 	z-index: 10;
 }
 
 /* ── Income chip ── */
 .income-chip {
-	background: #f0fdf4 !important;
-	color: #166534 !important;
-	border-left: 2px solid #22c55e !important;
-	box-shadow: none !important;
+	background: #0d2818 !important;
+	color: #86d4a8 !important;
+	border-left: 2px solid #2d9e6a !important;
 }
 
 /* ── More link ── */
 .fc .fc-daygrid-more-link {
-	color: var(--slate);
+	color: var(--accent);
 	font-size: 0.74em;
 	font-weight: 500;
-	letter-spacing: 0.03em;
 }
 
 .fc .fc-daygrid-more-link:hover {
-	color: var(--text-primary);
+	color: var(--accent-bright);
 	text-decoration: none;
 }
 
 /* ── Overflow Popover ── */
 .fc .fc-popover {
-	background: var(--bg-surface) !important;
-	border: 1px solid var(--border) !important;
+	background: var(--bg-elevated) !important;
+	border: 1px solid var(--border-mid) !important;
 	border-radius: var(--radius-lg) !important;
-	box-shadow: var(--shadow-lg) !important;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
 }
 
 .fc .fc-popover-header {
-	background: #f8f9fc !important;
+	background: var(--bg-card) !important;
 	color: var(--text-secondary) !important;
 	border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
 	font-size: 0.78em;

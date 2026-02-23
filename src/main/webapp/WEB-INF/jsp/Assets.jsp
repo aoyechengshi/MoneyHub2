@@ -88,14 +88,14 @@
 
 	<script>
 		function openExpenseModal() {
-			document.getElementById('expenseModal').style.display = 'block';
+			document.getElementById('expenseModal').style.display = 'flex';
 		}
 		function closeExpenseModal() {
 			document.getElementById('expenseModal').style.display = 'none';
 		}
 
 		function openBalanceAnalysisModal() {
-			document.getElementById('balanceModal').style.display = 'block';
+			document.getElementById('balanceModal').style.display = 'flex';
 		}
 		function closeBalanceAnalysisModal() {
 			document.getElementById('balanceModal').style.display = 'none';

@@ -160,23 +160,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
 
-        eventDidMount: function (info) {
+        eventMouseEnter: function (info) {
             const tooltip = document.getElementById('fcTooltip');
             if (!tooltip) return;
             const memo = info.event.extendedProps.memo || info.event.extendedProps.note || '';
             let content = info.event.title;
             if (memo.trim()) content += '\nメモ: ' + memo;
-            info.el.addEventListener('mouseenter', function (e) {
-                tooltip.textContent = content;
-                tooltip.style.display = 'block';
-                positionTooltip(e, tooltip);
-            });
-            info.el.addEventListener('mousemove', function (e) {
-                positionTooltip(e, tooltip);
-            });
-            info.el.addEventListener('mouseleave', function () {
-                tooltip.style.display = 'none';
-            });
+            tooltip.textContent = content;
+            tooltip.style.display = 'block';
+            positionTooltip(info.jsEvent, tooltip);
+        },
+
+        eventMouseLeave: function () {
+            const tooltip = document.getElementById('fcTooltip');
+            if (tooltip) tooltip.style.display = 'none';
         }
     });
 

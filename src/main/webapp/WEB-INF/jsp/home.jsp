@@ -54,7 +54,6 @@
 			</c:choose>
 		</main>
 	</div>
-	<div id="fcTooltip" class="fc-event-tooltip"></div>
 	<jsp:include page="Modal.jsp" />
 	<script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -145,41 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('editIncomeDate').value = info.event.startStr;
                 document.getElementById('editIncomeModal').style.display = 'flex';
             }
-        },
-
-        eventMouseEnter: function (info) {
-            const tooltip = document.getElementById('fcTooltip');
-            if (!tooltip) return;
-            const memo = info.event.extendedProps.memo || info.event.extendedProps.note || '';
-            let content = info.event.title;
-            if (memo.trim()) content += '\nメモ: ' + memo;
-            tooltip.textContent = content;
-            tooltip.classList.remove('below');
-            tooltip.style.display = 'block';
-
-            const rect = info.el.getBoundingClientRect();
-            const ttW = tooltip.offsetWidth;
-            const ttH = tooltip.offsetHeight;
-            const gap = 10;
-
-            // イベントの中心に横揃え（画面端クランプ）
-            let left = rect.left + rect.width / 2 - ttW / 2;
-            left = Math.max(4, Math.min(left, window.innerWidth - ttW - 4));
-
-            // 上に表示できなければ下に
-            let top = rect.top - ttH - gap;
-            if (top < 4) {
-                top = rect.bottom + gap;
-                tooltip.classList.add('below');
-            }
-
-            tooltip.style.left = left + 'px';
-            tooltip.style.top  = top + 'px';
-        },
-
-        eventMouseLeave: function () {
-            const tooltip = document.getElementById('fcTooltip');
-            if (tooltip) tooltip.style.display = 'none';
         }
     });
 

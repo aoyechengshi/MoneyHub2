@@ -5,31 +5,40 @@ header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 14px 32px;
-	background: #111122;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+	padding: 0 32px;
+	height: 66px;
+	background: rgba(5, 5, 15, 0.92);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border-bottom: 1px solid var(--gold-border);
+	box-shadow: 0 1px 0 var(--gold-border), 0 4px 30px rgba(0, 0, 0, 0.6);
+	z-index: 100;
 	gap: 16px;
 }
 
 .header-brand {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 14px;
 }
 
 header h1 {
 	margin: 0;
 	font-family: 'Playfair Display', serif;
-	font-size: 24px;
-	color: #e6c07b;
-	letter-spacing: 0.04em;
+	font-size: 22px;
+	background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-base) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	letter-spacing: 0.06em;
 }
 
 .header-welcome {
-	font-size: 0.85em;
-	color: #aaa;
+	font-size: 0.8em;
+	color: var(--text-secondary);
 	margin: 0;
 	white-space: nowrap;
+	letter-spacing: 0.04em;
 }
 
 header form {
@@ -38,28 +47,34 @@ header form {
 
 .back-btn {
 	background: transparent;
-	border: 1px solid #e6c07b;
-	color: #e6c07b;
-	padding: 8px 16px;
+	border: 1px solid var(--gold-border);
+	color: var(--gold-base);
+	padding: 8px 22px;
 	border-radius: 20px;
 	cursor: pointer;
-	transition: background 0.2s;
+	transition: all 0.25s;
+	font-size: 0.86em;
+	letter-spacing: 0.04em;
 }
 
 .back-btn:hover {
-	background: rgba(230, 192, 123, 0.15);
+	background: var(--gold-glow);
+	border-color: var(--gold-bright);
+	color: var(--gold-bright);
+	box-shadow: 0 0 18px var(--gold-glow);
 }
 
 /* ロゴ */
 header .logo {
-	width: 56px;
-	height: 56px;
+	width: 48px;
+	height: 48px;
 	border-radius: 50%;
 	object-fit: cover;
 	display: block;
 	margin: 0;
 	padding: 0;
 	background: none;
+	box-shadow: 0 0 14px var(--gold-glow);
 }
 
 /* ===== レイアウト ===== */
@@ -71,12 +86,14 @@ header .logo {
 /* ===== サイドバー ===== */
 .sidebar {
 	width: 220px;
-	background: #1a1a2f;
-	padding: 24px 16px;
+	background: rgba(8, 8, 20, 0.96);
+	backdrop-filter: blur(10px);
+	padding: 20px 10px;
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
-	box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+	gap: 2px;
+	border-right: 1px solid var(--gold-border);
+	box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4);
 	flex-shrink: 0;
 	position: sticky;
 	top: 0;
@@ -84,59 +101,74 @@ header .logo {
 	overflow-y: auto;
 }
 
-/* サイドバー内のスペーサー（ログアウトを下部に押し下げる） */
 .sidebar-spacer {
 	flex: 1;
 }
 
-/* サイドバー用ボタン */
 .side-item {
 	background: none;
 	border: none;
-	color: #fdf6e3;
+	color: var(--text-primary);
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	font-size: 0.95em;
-	padding: 11px 12px;
+	font-size: 0.88em;
+	padding: 11px 14px;
 	border-radius: 8px;
 	cursor: pointer;
 	text-align: left;
 	width: 100%;
-	transition: background 0.2s, padding-left 0.15s;
+	transition: all 0.2s ease;
+	letter-spacing: 0.02em;
+	position: relative;
 }
 
 .side-item.active {
-	background: rgba(230, 192, 123, 0.2);
-	border-left: 3px solid #e6c07b;
-	padding-left: 9px;
+	background: linear-gradient(120deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.06) 100%);
+	border-left: 2px solid var(--gold-base);
+	padding-left: 12px;
+	color: var(--gold-bright);
+	box-shadow: inset 0 0 24px rgba(201, 162, 39, 0.05);
 }
 
 .side-item i {
-	color: #e6c07b;
-	font-size: 1.1em;
+	color: var(--gold-base);
+	font-size: 1em;
 	width: 18px;
 	text-align: center;
 	flex-shrink: 0;
+	transition: all 0.2s;
 }
 
 .side-item:hover {
-	background: rgba(230, 192, 123, 0.12);
-	padding-left: 16px;
+	background: rgba(201, 162, 39, 0.1);
+	padding-left: 18px;
+	color: var(--gold-bright);
 }
 
-/* ログアウトボタン */
+.side-item:hover i {
+	color: var(--gold-bright);
+	filter: drop-shadow(0 0 5px var(--gold-dim));
+}
+
 .logout-btn {
-	color: #ff8a8a;
+	color: #b06060;
 	margin-top: 4px;
 }
 
 .logout-btn i {
-	color: #ff8a8a;
+	color: #b06060;
 }
 
 .logout-btn:hover {
-	background: rgba(255, 100, 100, 0.12);
+	background: rgba(180, 60, 60, 0.12);
+	color: #ff8a8a;
+	padding-left: 18px;
+}
+
+.logout-btn:hover i {
+	color: #ff8a8a;
+	filter: drop-shadow(0 0 5px rgba(200, 80, 80, 0.5));
 }
 
 /* ===== メイン ===== */
@@ -158,7 +190,6 @@ header .logo {
 	gap: 2px;
 }
 
-/* setting-sub内のformをflexレイアウトを崩さないように */
 .setting-sub form {
 	display: contents;
 }
@@ -167,53 +198,52 @@ header .logo {
 	display: flex;
 }
 
-/* サブ項目 */
 .sub-item {
 	background: none;
 	border: none;
-	color: #fdf6e3;
+	color: var(--text-primary);
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding: 8px 12px 8px 20px;
-	font-size: 0.88em;
+	padding: 8px 12px 8px 22px;
+	font-size: 0.84em;
 	border-radius: 6px;
 	cursor: pointer;
 	text-align: left;
 	width: 100%;
-	transition: background 0.2s, padding-left 0.15s;
-	opacity: 0.85;
+	transition: all 0.2s;
+	opacity: 0.8;
 }
 
 .sub-item i {
-	color: #e6c07b;
-	font-size: 0.95em;
+	color: var(--gold-base);
+	font-size: 0.9em;
 	width: 16px;
 	text-align: center;
 	flex-shrink: 0;
 }
 
 .sub-item:hover {
-	background: rgba(230, 192, 123, 0.12);
-	padding-left: 24px;
+	background: rgba(201, 162, 39, 0.09);
+	padding-left: 26px;
 	opacity: 1;
+	color: var(--gold-bright);
 }
 
-/* サイドバーの区切り線 */
 .sidebar-divider {
 	border: none;
-	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	border-top: 1px solid rgba(201, 162, 39, 0.1);
 	margin: 8px 0;
 }
 
-/* ===== レスポンシブ（モバイル対応） ===== */
+/* ===== レスポンシブ ===== */
 @media (max-width: 768px) {
 	header {
-		padding: 12px 16px;
+		padding: 0 16px;
 	}
 
 	header h1 {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.header-welcome {
@@ -245,12 +275,12 @@ header .logo {
 	}
 
 	.setting-sub.open {
-		/* モバイルではサブ項目を横に展開 */
 		position: absolute;
 		left: 56px;
-		background: #1a1a2f;
+		background: rgba(8, 8, 20, 0.98);
 		border-radius: 0 8px 8px 0;
-		box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+		border: 1px solid var(--gold-border);
+		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
 		padding: 8px;
 		z-index: 100;
 		min-width: 160px;

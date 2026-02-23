@@ -5,108 +5,97 @@
 	width: 95%;
 	max-width: 1400px;
 	margin: 16px auto;
-	background: #1a1a2f;
-	padding: 25px;
-	border-radius: 12px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.05);
+	background: rgba(10, 10, 22, 0.88);
+	backdrop-filter: blur(10px);
+	padding: 24px;
+	border-radius: 14px;
+	border: 1px solid var(--gold-border);
+	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 	box-sizing: border-box;
 }
 
-.fc-theme-standard td,
 /* セルの境界線 */
+.fc-theme-standard td,
 .fc-theme-standard th {
-	/* セルの境界線 */
-	border-color: rgba(255, 255, 255, 0.05);
+	border-color: rgba(201, 162, 39, 0.1);
 }
 
+/* カレンダータイトル */
 .fc .fc-toolbar-title {
-	/* カレンダーのタイトル */
-	color: #e6c07b;
-	font-size: 1.8em;
+	color: var(--gold-bright);
+	font-size: 1.55em;
 	font-family: 'Playfair Display', serif;
+	letter-spacing: 0.04em;
 }
 
+/* ナビゲーションボタン */
 .fc-button {
-	/* カレンダーのボタンの見た目 */
-	background: #2a2a44 !important;
-	border: none !important;
-	color: #dcdcdc !important;
-	border-radius: 5px !important;
+	background: rgba(201, 162, 39, 0.1) !important;
+	border: 1px solid var(--gold-border) !important;
+	color: var(--gold-base) !important;
+	border-radius: 6px !important;
+	font-size: 0.84em !important;
+	transition: all 0.2s !important;
+	letter-spacing: 0.03em !important;
 }
 
 .fc-button:hover {
-	/* カーソルを合わせた時の装飾 */
-	background: #3a3a55 !important;
+	background: rgba(201, 162, 39, 0.2) !important;
+	border-color: var(--gold-base) !important;
+	color: var(--gold-bright) !important;
+	box-shadow: 0 0 14px var(--gold-glow) !important;
 }
 
+.fc-button-active,
+.fc-button:not(:disabled):active {
+	background: rgba(201, 162, 39, 0.28) !important;
+	border-color: var(--gold-bright) !important;
+	color: var(--gold-bright) !important;
+	box-shadow: 0 0 18px var(--gold-glow) !important;
+}
+
+/* イベントチップ */
 .fc-event {
-	border-radius: 6px;
-	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
-	font-weight: 400;
+	border-radius: 4px;
+	border: none !important;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	font-size: 0.78em;
+	font-weight: 500;
+	letter-spacing: 0.01em;
 }
 
+/* 今日のセル */
 .fc-day-today {
-	background: rgba(230, 192, 123, 0.15) !important;
-	box-shadow: inset 0 0 0 2px #e6c07b;
+	background: rgba(201, 162, 39, 0.07) !important;
+	box-shadow: inset 0 0 0 1px rgba(201, 162, 39, 0.35);
 }
 
+/* 曜日ヘッダー */
+.fc .fc-col-header-cell-cushion {
+	color: var(--gold-base);
+	font-size: 0.8em;
+	letter-spacing: 0.08em;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 10px 4px;
+}
+
+/* 日付番号 */
+.fc .fc-daygrid-day-number {
+	color: var(--text-secondary);
+	font-size: 0.82em;
+	padding: 4px 8px;
+	transition: color 0.2s;
+}
+
+.fc .fc-daygrid-day:hover .fc-daygrid-day-number {
+	color: var(--gold-bright);
+}
+
+/* 収入チップ */
 .income-chip {
-	background: linear-gradient(135deg, #3fb950, #2ea043);
-	color: #fff;
-	font-weight: 600;
-}
-
-/* ===== イベントホバー吹き出し ===== */
-.fc-event-tooltip {
-	position: fixed;
-	background: #2a2a44;
-	border: 1px solid rgba(230, 192, 123, 0.5);
-	color: #f5f5f5;
-	padding: 10px 14px;
-	border-radius: 8px;
-	font-size: 13px;
-	max-width: 240px;
-	pointer-events: none;
-	z-index: 9999;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-	line-height: 1.6;
-	word-wrap: break-word;
-	white-space: pre-wrap;
-	display: none;
-}
-
-/* 下向き矢印（イベントの上に表示するとき）：ボーダー層 */
-.fc-event-tooltip::before {
-	content: '';
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-	border: 8px solid transparent;
-	border-top-color: rgba(230, 192, 123, 0.5);
-}
-/* 下向き矢印：塗り層 */
-.fc-event-tooltip::after {
-	content: '';
-	position: absolute;
-	top: calc(100% - 1px);
-	left: 50%;
-	transform: translateX(-50%);
-	border: 7px solid transparent;
-	border-top-color: #2a2a44;
-}
-
-/* 上向き矢印（イベントの下に表示するとき）*/
-.fc-event-tooltip.below::before {
-	top: auto;
-	bottom: 100%;
-	border-top-color: transparent;
-	border-bottom-color: rgba(230, 192, 123, 0.5);
-}
-.fc-event-tooltip.below::after {
-	top: auto;
-	bottom: calc(100% - 1px);
-	border-top-color: transparent;
-	border-bottom-color: #2a2a44;
+	background: linear-gradient(135deg, #1f6640, #164d30) !important;
+	color: #80ffb0 !important;
+	font-weight: 500;
+	border-left: 2px solid #3ddc84 !important;
 }

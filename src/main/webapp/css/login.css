@@ -1,87 +1,109 @@
 @charset "UTF-8";
 
-/*  画面全体  */
 body {
-    display: flex;               /*  justify-content,align-itemsを使うための記述  */
-    justify-content: center;     /*  横方向の中央に配置  */
-    align-items: center;         /*  縦方向の中央に配置  */
-    height: 100vh;               /* 画面全体の大きさの指定 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 .login-card {
-    background: linear-gradient(145deg, #1a1a2f, #2a2a44);   /*  左下から右下に向かうグラデーション背景  */
-    width: 380px;                                            /*  幅 */
-    padding: 40px 40px;                                      /*  内側の余白 */
-    border-radius: 12px;                                     /*  角を丸くする */
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6);                 /*  影をつける */
-    text-align: center;                                      /*  文字を中央揃え */
-	position: relative;                                      /*  カーソルを合わせた時に表示される影の基準（親要素） */
-    overflow: hidden;                                        /*  要素からはみ出た部分を表示しない */
-    border: 1px solid rgba(255,255,255,0.1);                 /*  境界線の枠 */
+	background: rgba(10, 10, 24, 0.94);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	width: 400px;
+	padding: 50px 44px;
+	border-radius: 18px;
+	border: 1px solid rgba(201, 162, 39, 0.22);
+	box-shadow:
+		0 28px 70px rgba(0, 0, 0, 0.85),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 80px rgba(201, 162, 39, 0.06);
+	text-align: center;
+	position: relative;
+	overflow: hidden;
 }
 
-.login-card::before {                         /* login-cardより上に表示されるデザイン  */
-    content: "";                              /*  */
-    position: absolute;                       /* 親要素に対して自由に配置  */
-    top: -60%;                                /* 斜めの光が出るように  */
-    left: -60%;                               /*   */
-    width: 200%;                              /*   */
-    height: 200%;                             /*   */
-    background: rgba(255,255,255,0.03);       /*  透明度の低い白色 */
-    transform: rotate(45deg);                 /*  45°に回転 */
-    transition: all 0.6s;                     /*  アニメーションを0.6秒で変化 */
-	pointer-events: none;                     /*  クリックを邪魔しない */
+/* 光彩スウィープ */
+.login-card::before {
+	content: "";
+	position: absolute;
+	top: -60%;
+	left: -60%;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(
+		45deg,
+		transparent 30%,
+		rgba(201, 162, 39, 0.04) 50%,
+		transparent 70%
+	);
+	transform: rotate(45deg);
+	transition: all 1s ease;
+	pointer-events: none;
 }
 
-.login-card:hover::before {                    /* カーソルをカードに合わせた時に  */
-    top: -30%;
-    left: -30%;
+.login-card:hover::before {
+	top: -20%;
+	left: -20%;
 }
 
-.login-card h2 {                                /* カード内の見出し  */
-    font-family: 'Playfair Display', serif;     /* フォントの指定 */
-    color: #e6c07b;                             /* 黄金色  */
-    margin-bottom: 25px;                        /* 下の余白  */
-    font-size: 2.2em;                           /* 大きさ  */
+.login-card h2 {
+	font-family: 'Playfair Display', serif;
+	background: linear-gradient(135deg, #f2c84b 0%, #c9a227 60%, #a07820 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 34px;
+	font-size: 2.2em;
+	letter-spacing: 0.03em;
 }
 
-.error {                                 /* エラー発生時 */
-    color: #ff6b6b;                      
-    min-height: 20px;                     
-    margin-bottom: 15px;                 
-    font-weight: bold;                 
+.error {
+	color: #ff6b6b;
+	min-height: 20px;
+	margin-bottom: 14px;
+	font-weight: 500;
+	font-size: 0.88em;
+	letter-spacing: 0.02em;
 }
 
-/* input */
-input {                                             /* フォームのテキスト入力のデザイン */
-    width: 90%;                                     /* 横幅 */
-    padding: 12px 14px;                             /* 内側の余白 */
-    margin-bottom: 15px;                    
-    background: #23233a;                            /* 背景 */  
-    border: 1px solid rgba(255,255,255,0.15);       /* 角を丸くする */
-    border-radius: 6px;                             /* 枠線 */
-    color: #f5f5f5;                                 /* 文字色 */
-}
-input:focus {                                       /* クリックした時の装飾 */
-    outline: none;
-    border-color: #e6c07b;
-    box-shadow: 0 0 8px rgba(230,192,123,0.5);
+input {
+	width: 90%;
+	padding: 13px 16px;
+	margin-bottom: 16px;
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(201, 162, 39, 0.2);
+	border-radius: 8px;
+	color: #ececf8;
+	font-size: 0.95em;
+	transition: all 0.22s;
 }
 
-button {                                                   /* ボタンのデザイン */
-    width: 90%;
-    padding: 12px;
-    background: linear-gradient(90deg, #e6c07b, #b48a56);
-    border: none;
-    border-radius: 6px;
-    color: #1a1a2f;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
+input:focus {
+	outline: none;
+	border-color: #c9a227;
+	background: rgba(201, 162, 39, 0.04);
+	box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.12), 0 0 24px rgba(201, 162, 39, 0.08);
 }
 
-button:hover {                                              /* ボタンにカーソルを合わせた時のデザイン */
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(230, 192, 123, 0.4);
+button {
+	width: 90%;
+	padding: 13px;
+	background: linear-gradient(135deg, #c9a227, #a07020);
+	border: none;
+	border-radius: 8px;
+	color: #05050f;
+	font-size: 0.95em;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.26s;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 32px rgba(201, 162, 39, 0.42);
+	background: linear-gradient(135deg, #f2c84b, #c9a227);
 }

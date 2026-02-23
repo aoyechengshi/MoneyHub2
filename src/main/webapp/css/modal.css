@@ -1,20 +1,15 @@
 @charset "UTF-8";
 
-/* ===== モーダル全体 ===== */
-/* ===============================
-   Modal Base
-================================= */
+/* ===== モーダルオーバーレイ ===== */
 .modal {
 	display: none;
 	position: fixed;
 	inset: 0;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.72);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
@@ -26,71 +21,88 @@
 	to   { opacity: 1; }
 }
 
-/* ===============================
-   Modal Content Box
-================================= */
+/* ===== モーダルコンテンツ ===== */
 .modal-content {
-	background: #1a1a2f;
-	padding: 30px;
-	border-radius: 10px;
-	width: 400px;
-	max-width: 90%;
-	max-height: 80vh;
+	background: rgba(11, 11, 26, 0.96);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	padding: 32px;
+	border-radius: 16px;
+	width: 420px;
+	max-width: 92%;
+	max-height: 82vh;
 	overflow-y: auto;
-
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	border: 1px solid var(--gold-border);
+	box-shadow:
+		0 12px 60px rgba(0, 0, 0, 0.75),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 50px rgba(201, 162, 39, 0.05);
 	position: relative;
-	border: 1px solid rgba(255,255,255,0.08);
-	animation: modalSlideIn 0.2s ease;
+	animation: modalSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalSlideIn {
-	from { transform: translateY(-20px); opacity: 0; }
-	to   { transform: translateY(0);     opacity: 1; }
+	from { transform: translateY(-18px) scale(0.98); opacity: 0; }
+	to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
 /* モーダルタイトル */
 .modal-content h2,
 .modal-content h3 {
-	color: #e6c07b;
+	background: linear-gradient(135deg, var(--gold-bright), var(--gold-base));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
 	font-family: 'Playfair Display', serif;
 	margin-top: 0;
-	margin-bottom: 20px;
+	margin-bottom: 22px;
 	text-align: center;
+	letter-spacing: 0.04em;
 }
 
-/* モーダル閉じるボタン */
+/* 閉じるボタン */
 .modal-content .close {
 	position: absolute;
 	top: 16px;
 	right: 20px;
-	font-size: 22px;
-	font-weight: bold;
-	color: #aaa;
+	font-size: 20px;
+	font-weight: 300;
+	color: var(--text-secondary);
 	cursor: pointer;
 	line-height: 1;
-	transition: color 0.2s;
+	transition: all 0.2s;
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
 }
 
 .modal-content .close:hover {
-	color: #e6c07b;
+	color: var(--gold-bright);
+	background: var(--gold-glow);
 }
 
-/* モーダル内のすべてのボタン */
+/* モーダル内ボタン */
 .modal-content button {
-	background: #2a2a44;
-	color: #f5f5f5;
-	border: none;
-	border-radius: 6px;
-	padding: 10px 16px;
+	background: rgba(201, 162, 39, 0.1);
+	color: var(--text-primary);
+	border: 1px solid var(--gold-border);
+	border-radius: 8px;
+	padding: 10px 18px;
 	margin: 6px 4px 6px 0;
 	cursor: pointer;
-	font-size: 14px;
-	transition: background 0.2s, transform 0.1s;
+	font-size: 13px;
+	transition: all 0.2s;
+	letter-spacing: 0.02em;
 }
 
 .modal-content button:hover {
-	background: #3a3a55;
+	background: rgba(201, 162, 39, 0.2);
+	border-color: var(--gold-base);
+	color: var(--gold-bright);
+	box-shadow: 0 0 14px var(--gold-glow);
 	transform: translateY(-1px);
 }
 
@@ -107,42 +119,41 @@
 	margin-bottom: 12px;
 }
 
-/* 入力欄（number, select, date, month） */
+/* 入力欄 */
 .modal-content input[type="number"],
 .modal-content input[type="date"],
 .modal-content input[type="month"],
 .modal-content select {
 	width: 100%;
-	padding: 8px 10px;
+	padding: 9px 12px;
 	margin: 6px 0 12px 0;
-	border-radius: 6px;
-	border: 1px solid #444;
-	background: #23233a;
-	color: #f5f5f5;
+	border-radius: 8px;
+	border: 1px solid rgba(201, 162, 39, 0.2);
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--text-primary);
 	font-size: 14px;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-/* 入力欄（text） */
 .modal-content input[type="text"] {
 	width: 100%;
-	padding: 8px 10px;
-	height: 40px;
+	padding: 9px 12px;
+	height: 42px;
 	margin: 6px 0 12px 0;
-	border-radius: 6px;
-	border: 1px solid #444;
-	background: #23233a;
-	color: #f5f5f5;
+	border-radius: 8px;
+	border: 1px solid rgba(201, 162, 39, 0.2);
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--text-primary);
 	font-size: 14px;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-/* フォーカス時のスタイル */
 .modal-content input:focus,
 .modal-content select:focus {
 	outline: none;
-	border-color: #e6c07b;
-	box-shadow: 0 0 6px rgba(230, 192, 123, 0.4);
+	border-color: var(--gold-base);
+	background: rgba(201, 162, 39, 0.04);
+	box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.12), 0 0 20px rgba(201, 162, 39, 0.08);
 }
 
 /* 固定費テーブル */
@@ -150,50 +161,56 @@
 	width: 100%;
 	border-collapse: collapse;
 	margin-top: 10px;
-	background: #1a1a2f;
+	background: transparent;
 }
 
 .modal-content th,
 .modal-content td {
-	padding: 8px;
-	border: 1px solid #444;
+	padding: 8px 10px;
+	border: 1px solid rgba(201, 162, 39, 0.15);
 	text-align: left;
-	color: #f5f5f5;
-	font-size: 14px;
+	color: var(--text-primary);
+	font-size: 13px;
 }
 
 .modal-content th {
-	background: #2a2a44;
+	background: rgba(201, 162, 39, 0.1);
+	color: var(--gold-base);
+	font-weight: 500;
+	letter-spacing: 0.02em;
 }
 
-/* チェックボックス中央寄せ */
 .modal-content input[type="checkbox"] {
 	display: block;
 	margin: 0 auto;
 	cursor: pointer;
-	accent-color: #e6c07b;
+	accent-color: var(--gold-base);
 }
 
-/* 固定費フォームのスクロール調整 */
 #fixedForm {
 	max-height: 400px;
 	overflow-y: auto;
 	padding-right: 6px;
 }
 
+/* 登録ボタン */
 .record-btn {
-	background: linear-gradient(135deg, #e6c07b, #c9a44d);
-	color: #1a1a2f;
+	background: linear-gradient(135deg, var(--gold-base), #a07020);
+	color: var(--bg-deep);
 	border: none;
 	border-radius: 10px;
-	padding: 10px 18px;
-	font-weight: bold;
+	padding: 11px 20px;
+	font-weight: 700;
 	cursor: pointer;
 	font-size: 14px;
+	letter-spacing: 0.04em;
+	transition: all 0.25s;
 }
 
 .record-btn:hover {
-	opacity: 0.85;
+	background: linear-gradient(135deg, var(--gold-bright), var(--gold-base));
+	box-shadow: 0 6px 24px rgba(201, 162, 39, 0.38);
+	transform: translateY(-1px);
 }
 
 /* モーダルボタンエリア */
@@ -206,7 +223,9 @@
 /* ラベル */
 .modal-content label {
 	display: block;
-	font-size: 13px;
-	color: #aaa;
+	font-size: 12px;
+	color: var(--text-secondary);
 	margin-bottom: 2px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
 }

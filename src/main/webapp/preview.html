@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoneyHub2 — Design Preview</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/card.css">
+<link rel="stylesheet" href="css/modal.css">
+<!-- FullCalendar -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* Extra layout helpers for preview */
+  html, body { margin:0; padding:0; height:100%; }
+  .preview-section { padding: 0; }
+  .modal { display: flex; position: relative; background: transparent;
+           backdrop-filter: none; width: 100%; height: auto; justify-content: center; padding: 24px 0; }
+  .modal-content { position: relative; }
+  .section-label { font-size:0.72em; font-weight:700; letter-spacing:0.12em;
+                   text-transform:uppercase; color:var(--text-muted);
+                   padding:20px 32px 8px; border-top: 1px solid var(--border); margin-top:8px; }
+  #calendar { margin: 16px auto; }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-brand">
+    <span style="font-size:1.5em;">💰</span>
+    <h1>MoneyHub</h1>
+  </div>
+  <span class="header-welcome">ようこそ、田中さん</span>
+  <form><button class="back-btn">ログアウト</button></form>
+</header>
+
+<!-- ========== LAYOUT ========== -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <button class="side-item active">
+      <i class="fa-solid fa-calendar-days"></i><span>カレンダー</span>
+    </button>
+    <button class="side-item">
+      <i class="fa-solid fa-chart-pie"></i><span>分析</span>
+    </button>
+    <button class="side-item">
+      <i class="fa-solid fa-list-ul"></i><span>収支一覧</span>
+    </button>
+    <button class="side-item">
+      <i class="fa-solid fa-gear"></i><span>設定</span>
+    </button>
+    <div class="setting-sub open" style="display:flex;">
+      <button class="sub-item"><i class="fa-solid fa-tag"></i><span>カテゴリ</span></button>
+      <button class="sub-item"><i class="fa-solid fa-wallet"></i><span>固定費</span></button>
+    </div>
+    <div class="sidebar-spacer"></div>
+    <hr class="sidebar-divider">
+    <button class="side-item logout-btn">
+      <i class="fa-solid fa-right-from-bracket"></i><span>ログアウト</span>
+    </button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <!-- Calendar -->
+    <div class="preview-section">
+      <div id="calendar"></div>
+    </div>
+
+    <!-- Cards -->
+    <p class="section-label">分析メニュー</p>
+    <div class="container">
+      <a class="card" href="#">
+        <i class="fa-solid fa-chart-bar"></i>
+        <strong>月別支出</strong>
+        <span>棒グラフで確認</span>
+      </a>
+      <a class="card" href="#">
+        <i class="fa-solid fa-chart-pie"></i>
+        <strong>カテゴリ別</strong>
+        <span>割合を確認</span>
+      </a>
+      <a class="card" href="#">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        <strong>収支推移</strong>
+        <span>折れ線グラフ</span>
+      </a>
+      <a class="card" href="#">
+        <i class="fa-solid fa-piggy-bank"></i>
+        <strong>貯蓄率</strong>
+        <span>達成状況</span>
+      </a>
+    </div>
+
+    <!-- Modal preview -->
+    <p class="section-label">モーダル（記録フォーム）</p>
+    <div class="modal" style="display:flex;">
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h2>収支を記録</h2>
+        <label>カテゴリ</label>
+        <select>
+          <option>食費</option>
+          <option>交通費</option>
+          <option>娯楽</option>
+        </select>
+        <label>金額（円）</label>
+        <input type="number" placeholder="3,500">
+        <label>日付</label>
+        <input type="date" value="2026-02-24">
+        <label>メモ</label>
+        <input type="text" placeholder="スーパーでの買い物">
+        <div class="modal-buttons">
+          <button type="submit" name="buttonId" value="e003">記録する</button>
+          <button class="cancel-btn">キャンセル</button>
+          <button name="buttonId" value="e008">削除</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var cal = new FullCalendar.Calendar(document.getElementById('calendar'), {
+    initialView: 'dayGridMonth',
+    locale: 'ja',
+    height: 'auto',
+    headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+    events: [
+      { title: '給料：250,000円', start: '2026-02-25', backgroundColor: '#f0fdf4', borderColor: '#22c55e', textColor: '#15803d' },
+      { title: '食費：3,500円',   start: '2026-02-10', backgroundColor: '#fef2f2', borderColor: '#dc2626', textColor: '#b91c1c' },
+      { title: '家賃：80,000円',  start: '2026-02-01', backgroundColor: '#f0f9ff', borderColor: '#0284c7', textColor: '#0369a1' },
+      { title: '外食：2,200円',   start: '2026-02-14', backgroundColor: '#fef2f2', borderColor: '#dc2626', textColor: '#b91c1c' },
+      { title: '電気代：8,500円', start: '2026-02-20', backgroundColor: '#f0f9ff', borderColor: '#0284c7', textColor: '#0369a1' },
+      { title: '交通費：1,200円', start: '2026-02-18', backgroundColor: '#fef2f2', borderColor: '#dc2626', textColor: '#b91c1c' },
+    ]
+  });
+  cal.render();
+});
+</script>
+</body>
+</html>

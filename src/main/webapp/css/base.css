@@ -1,47 +1,36 @@
 @charset "UTF-8";
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* =====================================================
-   DESIGN TOKENS  — Professional Dark
+   DESIGN TOKENS — Clean Light
    ===================================================== */
 :root {
 	/* ── Backgrounds ── */
-	--bg-deep:     #0d0f1a;
-	--bg-surface:  #111520;
-	--bg-elevated: #161b28;
-	--bg-card:     #1b2032;
-	--bg-glass:    rgba(17, 21, 32, 0.96);
+	--bg:          #ffffff;
+	--bg-surface:  #f8fafc;
+	--bg-elevated: #f1f5f9;
+	--bg-card:     #ffffff;
 
 	/* ── Borders ── */
-	--border:     rgba(255, 255, 255, 0.07);
-	--border-mid: rgba(255, 255, 255, 0.11);
+	--border:     #e2e8f0;
+	--border-mid: #cbd5e1;
 
-	/* ── Accent — muted slate-indigo ── */
-	--accent:        #7c85d0;
-	--accent-bright: #a0a8e0;
-	--accent-subtle: rgba(124, 133, 208, 0.1);
-	--accent-border: rgba(124, 133, 208, 0.22);
-
-	/* ── Gold — title & today only ── */
-	--gold-bright: #f0c84a;
-	--gold-base:   #c9a227;
-	--gold-dim:    rgba(201, 162, 39, 0.4);
-	--gold-glow:   rgba(201, 162, 39, 0.12);
-	--gold-border: rgba(201, 162, 39, 0.2);
-
-	/* ── Legacy compat ── */
-	--indigo:        var(--accent);
-	--indigo-bright: var(--accent-bright);
-	--indigo-dim:    rgba(124, 133, 208, 0.3);
-	--indigo-glow:   rgba(124, 133, 208, 0.08);
-	--indigo-border: var(--accent-border);
+	/* ── Accent (blue) ── */
+	--accent:        #2563eb;
+	--accent-bright: #1d4ed8;
+	--accent-subtle: #eff6ff;
+	--accent-border: #bfdbfe;
 
 	/* ── Text ── */
-	--text-primary:   #dde0ec;
-	--text-secondary: #58607a;
-	--text-muted:     #2c3048;
+	--text-primary:   #0f172a;
+	--text-secondary: #64748b;
+	--text-muted:     #94a3b8;
+
+	/* ── Legacy compat ── */
+	--gold-bright: #d97706;
+	--gold-base:   #d97706;
+	--indigo:      #2563eb;
 
 	/* ── Radius ── */
 	--radius-sm: 6px;
@@ -55,25 +44,25 @@
 }
 
 body {
-	font-family: 'Inter', 'Lato', sans-serif;
+	font-family: 'Inter', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
 	font-size: 14px;
 	line-height: 1.6;
-	background: var(--bg-deep);
+	background: var(--bg-surface);
 	color: var(--text-primary);
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
 }
 
 /* ログイン画面のロゴ */
 .logo {
-	width: 140px;
-	height: 140px;
+	width: 120px;
+	height: 120px;
 	border-radius: 50%;
 	object-fit: contain;
-	background: rgba(255, 255, 255, 0.03);
-	padding: 10px;
 	display: block;
 	margin: 0 auto 24px;
-	box-shadow: 0 0 0 1px var(--border), 0 4px 24px rgba(0, 0, 0, 0.5);
+	background: var(--bg);
+	border: 1px solid var(--border);
 }

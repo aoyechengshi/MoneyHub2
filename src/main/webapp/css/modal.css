@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =====================================================
-   MODALS — Professional Dark
+   MODALS — Clean Light
    ===================================================== */
 
 /* ── Overlay ── */
@@ -11,13 +11,13 @@
 	inset: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(5, 6, 14, 0.78);
-	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
+	background: rgba(15, 23, 42, 0.4);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
-	animation: modalFadeIn 0.18s ease;
+	animation: modalFadeIn 0.16s ease;
 }
 
 @keyframes modalFadeIn {
@@ -28,40 +28,39 @@
 /* ── Panel ── */
 .modal-content {
 	position: relative;
-	background: var(--bg-elevated);
-	padding: 32px 28px 26px;
+	background: var(--bg);
+	padding: 28px 24px 22px;
 	border-radius: var(--radius-xl);
 	width: 440px;
 	max-width: 92%;
 	max-height: 84vh;
 	overflow-y: auto;
-	border: 1px solid var(--border-mid);
-	box-shadow: 0 16px 60px rgba(0, 0, 0, 0.7);
-	animation: modalSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+	border: 1px solid var(--border);
+	box-shadow: 0 8px 32px rgba(15, 23, 42, 0.14);
+	animation: modalSlideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalSlideIn {
-	from { transform: translateY(-12px) scale(0.98); opacity: 0; }
+	from { transform: translateY(-10px) scale(0.99); opacity: 0; }
 	to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
 /* ── Headings ── */
 .modal-content h2,
 .modal-content h3 {
-	font-family: 'Playfair Display', serif;
-	font-size: 1.18em;
+	font-size: 1.05em;
 	font-weight: 700;
-	letter-spacing: 0.05em;
+	letter-spacing: -0.01em;
 	color: var(--text-primary);
 	text-align: center;
-	margin: 0 0 22px;
+	margin: 0 0 20px;
 }
 
 .modal-content h4 {
-	font-size: 0.74em;
+	font-size: 0.7em;
 	font-weight: 600;
 	color: var(--text-secondary);
-	letter-spacing: 0.1em;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	margin: 16px 0 8px;
 	padding-bottom: 6px;
@@ -72,7 +71,7 @@
 .modal-content p {
 	color: var(--text-secondary);
 	font-size: 0.86em;
-	margin: 0 0 12px;
+	margin: 0 0 10px;
 }
 
 /* ── Close button ── */
@@ -82,32 +81,32 @@
 	right: 16px;
 	font-size: 18px;
 	font-weight: 300;
-	color: var(--text-secondary);
+	color: var(--text-muted);
 	cursor: pointer;
 	line-height: 1;
-	transition: color 0.16s, background 0.16s;
 	width: 26px;
 	height: 26px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
+	transition: background 0.14s, color 0.14s;
 }
 
 .modal-content .close:hover {
+	background: var(--bg-elevated);
 	color: var(--text-primary);
-	background: rgba(255, 255, 255, 0.06);
 }
 
 /* ── Labels ── */
 .modal-content label {
 	display: block;
-	font-size: 0.72em;
+	font-size: 0.7em;
 	font-weight: 600;
 	color: var(--text-secondary);
 	margin-bottom: 3px;
 	margin-top: 2px;
-	letter-spacing: 0.08em;
+	letter-spacing: 0.06em;
 	text-transform: uppercase;
 }
 
@@ -119,15 +118,14 @@
 .modal-content select {
 	width: 100%;
 	padding: 9px 12px;
-	margin: 3px 0 14px;
+	margin: 3px 0 12px;
 	border-radius: var(--radius-md);
 	border: 1px solid var(--border-mid);
-	background: var(--bg-surface);
+	background: var(--bg);
 	color: var(--text-primary);
-	-webkit-text-fill-color: var(--text-primary);
 	font-size: 14px;
-	font-family: 'Inter', sans-serif;
-	transition: border-color 0.16s, background 0.16s;
+	font-family: inherit;
+	transition: border-color 0.14s, box-shadow 0.14s;
 	appearance: none;
 	-webkit-appearance: none;
 }
@@ -138,68 +136,61 @@
 
 /* readonly */
 .modal-content input[readonly] {
+	background: var(--bg-surface) !important;
 	color: var(--text-secondary) !important;
-	-webkit-text-fill-color: var(--text-secondary) !important;
-	background: rgba(255, 255, 255, 0.02) !important;
 	border-color: var(--border) !important;
 	cursor: default;
 }
 
 /* select arrow */
 .modal-content select {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2358607a'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2394a3b8'/%3E%3C/svg%3E");
 	background-repeat: no-repeat;
 	background-position: right 12px center;
 	padding-right: 30px;
 }
 
 .modal-content select option {
-	background: var(--bg-elevated);
+	background: var(--bg);
 	color: var(--text-primary);
 }
 
 .modal-content input:focus,
 .modal-content select:focus {
 	outline: none;
-	border-color: var(--accent-border);
-	background: var(--bg-card);
+	border-color: var(--accent);
 	box-shadow: 0 0 0 3px var(--accent-subtle);
-	-webkit-text-fill-color: var(--text-primary);
 }
 
 /* ── Divider ── */
 .modal-content hr {
 	border: none;
 	border-top: 1px solid var(--border);
-	margin: 18px 0;
+	margin: 16px 0;
 }
 
 /* ── Buttons (base) ── */
 .modal-content button {
-	background: var(--bg-card);
+	background: var(--bg);
 	color: var(--text-secondary);
 	border: 1px solid var(--border-mid);
 	border-radius: var(--radius-md);
-	padding: 9px 18px;
+	padding: 8px 16px;
 	margin: 4px 4px 4px 0;
 	cursor: pointer;
 	font-size: 13px;
-	font-family: 'Inter', sans-serif;
+	font-family: inherit;
 	font-weight: 500;
-	transition: background 0.16s, border-color 0.16s, color 0.16s;
-	letter-spacing: 0.02em;
+	transition: background 0.14s, border-color 0.14s, color 0.14s, transform 0.12s;
 }
 
 .modal-content button:hover {
-	background: var(--accent-subtle);
-	border-color: var(--accent-border);
-	color: var(--accent-bright);
+	background: var(--bg-elevated);
+	color: var(--text-primary);
 	transform: translateY(-1px);
 }
 
-.modal-content button:active {
-	transform: translateY(0);
-}
+.modal-content button:active { transform: translateY(0); }
 
 /* ── Primary (submit) button ── */
 .record-btn,
@@ -217,11 +208,10 @@
 .modal-content button[type="submit"][name="buttonId"][value="e020"],
 .modal-content button[type="submit"][name="buttonId"][value="e022"],
 .modal-content button[type="submit"][name="buttonId"][value="e023"] {
-	background: var(--accent-subtle);
-	color: var(--accent-bright);
-	border: 1px solid var(--accent-border);
+	background: var(--accent);
+	color: #ffffff;
+	border-color: var(--accent);
 	font-weight: 600;
-	letter-spacing: 0.04em;
 }
 
 .record-btn:hover,
@@ -239,41 +229,40 @@
 .modal-content button[type="submit"][name="buttonId"][value="e020"]:hover,
 .modal-content button[type="submit"][name="buttonId"][value="e022"]:hover,
 .modal-content button[type="submit"][name="buttonId"][value="e023"]:hover {
-	background: rgba(124, 133, 208, 0.18);
-	border-color: var(--accent);
-	color: #fff;
+	background: var(--accent-bright);
+	border-color: var(--accent-bright);
+	color: #ffffff;
 }
 
 /* ── Danger (delete) button ── */
 .modal-content button[name="buttonId"][value="e008"],
 .modal-content button[name="buttonId"][value="e010"],
 .modal-content button[name="buttonId"][value="e013"] {
-	background: rgba(180, 60, 70, 0.08);
-	color: rgba(210, 100, 110, 0.85);
-	border: 1px solid rgba(180, 60, 70, 0.2);
+	background: #fff5f5;
+	color: #dc2626;
+	border: 1px solid #fecaca;
 }
 
 .modal-content button[name="buttonId"][value="e008"]:hover,
 .modal-content button[name="buttonId"][value="e010"]:hover,
 .modal-content button[name="buttonId"][value="e013"]:hover {
-	background: rgba(180, 60, 70, 0.16);
-	border-color: rgba(180, 60, 70, 0.4);
-	color: #e09098;
+	background: #fee2e2;
+	border-color: #f87171;
+	color: #b91c1c;
 }
 
 /* ── Cancel button ── */
 .cancel-btn,
 .modal-content button.cancel-btn {
-	background: transparent;
+	background: var(--bg);
 	color: var(--text-secondary);
-	border: 1px solid var(--border);
+	border: 1px solid var(--border-mid);
 }
 
 .cancel-btn:hover,
 .modal-content button.cancel-btn:hover {
-	background: rgba(255, 255, 255, 0.04);
+	background: var(--bg-elevated);
 	color: var(--text-primary);
-	border-color: var(--border-mid);
 }
 
 /* ── Table ── */
@@ -293,16 +282,16 @@
 }
 
 .modal-content th {
-	background: var(--bg-card);
+	background: var(--bg-surface);
 	color: var(--text-secondary);
-	font-size: 0.72em;
+	font-size: 0.7em;
 	font-weight: 600;
-	letter-spacing: 0.08em;
+	letter-spacing: 0.06em;
 	text-transform: uppercase;
 }
 
 .modal-content tr:hover td {
-	background: rgba(255, 255, 255, 0.02);
+	background: var(--bg-surface);
 }
 
 .modal-content input[type="checkbox"] {
@@ -340,5 +329,5 @@
 .modal-buttons {
 	display: flex;
 	gap: 10px;
-	margin-top: 16px;
+	margin-top: 14px;
 }

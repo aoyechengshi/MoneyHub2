@@ -1,63 +1,60 @@
 @charset "UTF-8";
 
 /* =====================================================
-   CALENDAR — Professional Dark
+   CALENDAR — Clean Light
    ===================================================== */
 
-/* ── Container ── */
 #calendar {
 	display: block;
 	width: 95%;
 	max-width: 1400px;
 	margin: 20px auto;
-	padding: 24px 22px 20px;
+	padding: 20px 18px 16px;
 	border-radius: var(--radius-xl);
 	box-sizing: border-box;
-
-	background: var(--bg-surface);
-	border: 1px solid var(--border-mid);
-	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+	background: var(--bg);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 }
 
 /* ── Toolbar ── */
 .fc .fc-toolbar.fc-header-toolbar {
-	margin-bottom: 16px;
-	padding-bottom: 14px;
+	margin-bottom: 14px;
+	padding-bottom: 12px;
 	border-bottom: 1px solid var(--border);
 }
 
 /* ── Title ── */
 .fc .fc-toolbar-title {
-	font-family: 'Playfair Display', serif;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	font-weight: 700;
-	letter-spacing: 0.05em;
+	letter-spacing: -0.01em;
 	color: var(--text-primary);
 }
 
 /* ── Nav Buttons ── */
 .fc-button {
-	background: var(--bg-elevated) !important;
+	background: var(--bg) !important;
 	border: 1px solid var(--border-mid) !important;
 	color: var(--text-secondary) !important;
 	border-radius: var(--radius-sm) !important;
 	font-size: 0.8em !important;
 	font-weight: 500 !important;
-	letter-spacing: 0.04em !important;
-	transition: background 0.16s, border-color 0.16s, color 0.16s !important;
+	transition: background 0.14s, border-color 0.14s, color 0.14s !important;
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
 
 .fc-button:hover {
-	background: var(--bg-card) !important;
-	border-color: var(--accent-border) !important;
-	color: var(--accent-bright) !important;
+	background: var(--bg-elevated) !important;
+	border-color: var(--border-mid) !important;
+	color: var(--text-primary) !important;
 }
 
 .fc-button-active,
 .fc-button:not(:disabled):active {
 	background: var(--accent-subtle) !important;
 	border-color: var(--accent-border) !important;
-	color: var(--accent-bright) !important;
+	color: var(--accent) !important;
 }
 
 /* ── Grid ── */
@@ -75,54 +72,58 @@
 	color: var(--text-secondary);
 	font-size: 0.72em;
 	font-weight: 600;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	padding: 9px 4px;
+	padding: 8px 4px;
 }
 
-.fc-day-sat .fc-col-header-cell-cushion { color: rgba(120, 160, 220, 0.65); }
-.fc-day-sun .fc-col-header-cell-cushion { color: rgba(220, 110, 120, 0.65); }
+.fc-day-sat .fc-col-header-cell-cushion { color: #2563eb; }
+.fc-day-sun .fc-col-header-cell-cushion { color: #dc2626; }
 
 /* ── Day Cells ── */
 .fc .fc-daygrid-day-number {
 	color: var(--text-secondary);
-	font-size: 0.79em;
+	font-size: 0.8em;
 	font-weight: 500;
-	padding: 5px 10px;
-	transition: color 0.14s;
+	padding: 5px 9px;
 	font-variant-numeric: tabular-nums;
 }
 
-.fc .fc-daygrid-day:hover .fc-daygrid-day-number {
-	color: var(--text-primary);
+.fc .fc-daygrid-day:hover {
+	background: var(--bg-surface) !important;
 }
 
-.fc .fc-daygrid-day:hover {
-	background: rgba(255, 255, 255, 0.02) !important;
-}
+.fc-day-sat .fc-daygrid-day-number { color: #3b82f6; }
+.fc-day-sun .fc-daygrid-day-number { color: #ef4444; }
 
 /* ── Today ── */
 .fc-day-today {
-	background: rgba(201, 162, 39, 0.05) !important;
-}
-
-.fc-day-today .fc-daygrid-day-top {
-	border-top: 2px solid rgba(201, 162, 39, 0.45);
+	background: var(--accent-subtle) !important;
 }
 
 .fc-day-today .fc-daygrid-day-number {
-	color: var(--gold-bright) !important;
+	background: var(--accent);
+	color: #ffffff !important;
 	font-weight: 700;
+	border-radius: 50%;
+	width: 26px;
+	height: 26px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 4px 6px;
+	padding: 0;
+	font-size: 0.78em;
 }
 
 /* ── Event Chips ── */
 .fc-event {
 	border-radius: 4px !important;
-	font-size: 0.77em;
+	font-size: 0.76em;
 	font-weight: 500;
 	letter-spacing: 0.01em;
 	transition: opacity 0.14s;
-	border: none !important;
+	border-left-width: 2px !important;
 }
 
 .fc-event:hover {
@@ -132,9 +133,9 @@
 
 /* ── Income chip ── */
 .income-chip {
-	background: #0d2818 !important;
-	color: #86d4a8 !important;
-	border-left: 2px solid #2d9e6a !important;
+	background: #f0fdf4 !important;
+	color: #15803d !important;
+	border-left: 2px solid #22c55e !important;
 }
 
 /* ── More link ── */
@@ -151,18 +152,18 @@
 
 /* ── Overflow Popover ── */
 .fc .fc-popover {
-	background: var(--bg-elevated) !important;
+	background: var(--bg) !important;
 	border: 1px solid var(--border-mid) !important;
 	border-radius: var(--radius-lg) !important;
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
 }
 
 .fc .fc-popover-header {
-	background: var(--bg-card) !important;
+	background: var(--bg-elevated) !important;
 	color: var(--text-secondary) !important;
 	border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
-	font-size: 0.78em;
-	letter-spacing: 0.07em;
+	font-size: 0.76em;
+	letter-spacing: 0.06em;
 	font-weight: 600;
 	border-bottom: 1px solid var(--border) !important;
 }

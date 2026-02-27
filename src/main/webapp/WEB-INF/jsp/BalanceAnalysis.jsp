@@ -17,24 +17,22 @@
 <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-body {
-	background: #0f0f1a;
-	color: #f5f5f5;
-}
-
 .charts-wrapper {
 	display: flex;
 	justify-content: center;
-	gap: 40px;
+	gap: 20px;
 	flex-wrap: wrap;
-	margin-top: 40px;
+	margin: 24px auto;
+	max-width: 1000px;
+	padding: 0 16px;
 }
 
 .chart-container {
-	background: #1a1a2f;
-	border-radius: 16px;
+	background: var(--bg);
+	border-radius: var(--radius-xl);
 	padding: 20px;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -52,18 +50,21 @@ body {
 
 .summary {
 	max-width: 720px;
-	margin: 40px auto;
-	background: #1a1a2f;
-	border-radius: 16px;
-	padding: 20px;
+	margin: 24px auto;
+	background: var(--bg);
+	border-radius: var(--radius-xl);
+	padding: 20px 28px;
 	text-align: center;
-	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+	color: var(--text-primary);
 }
 
 .summary p {
 	margin-top: 10px;
 	font-size: 1.1em;
-	color: #e6c07b;
+	font-weight: 700;
+	color: var(--accent);
 }
 </style>
 </head>
@@ -108,15 +109,16 @@ window.onload = function () {
   const expense = fixed + variable;
   const remain  = income - expense;
 
-  /* ===== 高級感カラーパレット ===== */
-  const luxuryColors = [
-    '#2f3e46',
-    '#354f52',
-    '#52796f',
-    '#e6c07b',
-    '#8b1e3f',
-    '#3a0ca3'
+  const chartColors = [
+    '#2563eb',
+    '#22c55e',
+    '#f59e0b',
+    '#ef4444',
+    '#8b5cf6',
+    '#06b6d4'
   ];
+
+  const legendStyle = { position: 'bottom', labels: { color: '#64748b', padding: 12 } };
 
   /* ===== 棒グラフ：収支全体 ===== */
   new Chart(document.getElementById('balanceChart'), {
@@ -126,11 +128,12 @@ window.onload = function () {
       datasets: [{
         data: [income, expense, remain],
         backgroundColor: [
-          '#2f3e46', // 収入
-          '#8b1e3f', // 支出
-          '#52796f'  // 残り
+          '#22c55e', // 収入
+          '#ef4444', // 支出
+          '#2563eb'  // 残り
         ],
-        borderWidth: 0
+        borderWidth: 0,
+        borderRadius: 6
       }]
     },
     options: {
@@ -138,9 +141,15 @@ window.onload = function () {
       scales: {
         y: {
           beginAtZero: true,
+          grid: { color: '#f1f5f9' },
           ticks: {
+            color: '#64748b',
             callback: v => v.toLocaleString() + ' 円'
           }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: '#64748b' }
         }
       }
     }
@@ -153,14 +162,14 @@ window.onload = function () {
       labels: ['固定費', '変動費'],
       datasets: [{
         data: [fixed, variable],
-        backgroundColor: ['#3a0ca3', '#e6c07b'],
+        backgroundColor: ['#2563eb', '#f59e0b'],
         borderWidth: 0,
         hoverOffset: 10
       }]
     },
     options: {
       plugins: {
-        legend: { position: 'bottom' },
+        legend: legendStyle,
         tooltip: {
           callbacks: {
             label: function(ctx) {
@@ -194,14 +203,14 @@ window.onload = function () {
         labels: categoryLabels,
         datasets: [{
           data: categoryAmounts,
-          backgroundColor: luxuryColors,
+          backgroundColor: chartColors,
           borderWidth: 0,
           hoverOffset: 10
         }]
       },
       options: {
         plugins: {
-          legend: { position: 'bottom' },
+          legend: legendStyle,
           tooltip: {
             callbacks: {
               label: function(ctx) {

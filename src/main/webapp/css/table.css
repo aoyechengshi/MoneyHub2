@@ -5,25 +5,26 @@ table {
 	max-width: 720px;
 	margin: 20px auto;
 	border-collapse: collapse;
-	background: rgba(10, 10, 22, 0.82);
-	color: var(--text-primary, #ececf8);
+	background: var(--bg);
+	color: var(--text-primary);
 	font-size: 14px;
-	border-radius: 10px;
+	border-radius: var(--radius-lg);
 	overflow: hidden;
-	border: 1px solid rgba(201, 162, 39, 0.15);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 }
 
 th,
 td {
 	padding: 11px 14px;
-	border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+	border-bottom: 1px solid var(--border);
 	text-align: right;
 }
 
 th {
-	background: rgba(201, 162, 39, 0.12);
-	color: var(--gold-base, #c9a227);
-	font-weight: 500;
+	background: var(--bg-surface);
+	color: var(--text-secondary);
+	font-weight: 600;
 	text-align: center;
 	letter-spacing: 0.04em;
 	font-size: 0.88em;
@@ -35,17 +36,17 @@ td.name {
 }
 
 .over {
-	color: #ff6b6b;
+	color: #dc2626;
 	font-weight: 600;
 }
 
 .ok {
-	color: #5de0a0;
+	color: #16a34a;
 	font-weight: 600;
 }
 
 tr:hover td {
-	background: rgba(201, 162, 39, 0.06);
+	background: var(--bg-surface);
 	transition: background 0.2s;
 }
 
@@ -53,16 +54,16 @@ tr:hover td {
 .table-area table {
 	width: 100%;
 	border-collapse: collapse;
-	color: var(--text-primary, #ececf8);
+	color: var(--text-primary);
 	font-size: 14px;
 }
 
 .table-area thead th {
-	background: rgba(201, 162, 39, 0.12);
-	color: var(--gold-base, #c9a227);
+	background: var(--bg-surface);
+	color: var(--text-secondary);
 	padding: 13px 14px;
 	text-align: left;
-	border-bottom: 1px solid rgba(201, 162, 39, 0.35);
+	border-bottom: 1px solid var(--border);
 	letter-spacing: 0.04em;
 	font-size: 0.88em;
 	text-transform: uppercase;
@@ -70,11 +71,11 @@ tr:hover td {
 
 .table-area tbody td {
 	padding: 12px 14px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	border-bottom: 1px solid var(--border);
 }
 
 .table-area tbody tr:hover {
-	background: rgba(201, 162, 39, 0.05);
+	background: var(--bg-surface);
 }
 
 .table-area td.amount,
@@ -86,7 +87,7 @@ tr:hover td {
 .rate-bar {
 	margin-top: 6px;
 	height: 5px;
-	background: rgba(255, 255, 255, 0.1);
+	background: var(--bg-elevated);
 	border-radius: 4px;
 	overflow: hidden;
 }
@@ -94,6 +95,6 @@ tr:hover td {
 .rate-bar span {
 	display: block;
 	height: 100%;
-	background: linear-gradient(90deg, var(--gold-bright, #f2c84b), var(--gold-base, #c9a227));
+	background: linear-gradient(90deg, var(--accent), var(--accent-bright));
 	border-radius: 4px;
 }

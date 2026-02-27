@@ -22,11 +22,12 @@
 <style>
 .chart-area {
 	max-width: 900px;
-	margin: 40px auto;
-	background: #1a1a2f;
-	border-radius: 18px;
+	margin: 24px auto;
+	background: var(--bg);
+	border-radius: var(--radius-xl);
 	padding: 30px;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 }
 
 .chart-wrapper {
@@ -108,13 +109,13 @@ window.onload = function () {
         total += Number('${a.amount}') || 0;
     </c:forEach>
 
-    const luxuryColors = [
-        '#e6c07b',
-        '#52796f',
-        '#354f52',
-        '#3a0ca3',
-        '#8b1e3f',
-        '#2f3e46'
+    const chartColors = [
+        '#2563eb',
+        '#22c55e',
+        '#f59e0b',
+        '#ef4444',
+        '#8b5cf6',
+        '#06b6d4'
     ];
 
     /* 中央テキスト */
@@ -123,8 +124,8 @@ window.onload = function () {
         afterDraw(chart) {
             const { ctx, chartArea:{width,height} } = chart;
             ctx.save();
-            ctx.font = 'bold 18px Lato';
-            ctx.fillStyle = '#e6c07b';
+            ctx.font = 'bold 18px Inter, sans-serif';
+            ctx.fillStyle = '#0f172a';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(
@@ -141,7 +142,7 @@ window.onload = function () {
             labels: labels,
             datasets: [{
                 data: values,
-                backgroundColor: luxuryColors,
+                backgroundColor: chartColors,
                 borderWidth: 0,
                 hoverOffset: 8
             }]
@@ -152,7 +153,7 @@ window.onload = function () {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#f5f5f5',
+                        color: '#64748b',
                         padding: 14
                     }
                 },

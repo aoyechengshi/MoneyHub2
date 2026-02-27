@@ -13,6 +13,12 @@
 	href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/table.css">
+<style>
+table { background: #ffffff !important; color: #0f172a; }
+th    { background: #f8fafc !important; color: #64748b; }
+td    { background: #ffffff !important; color: #0f172a; }
+tr:hover td { background: #f8fafc !important; }
+</style>
 </head>
 <body>
 	<table>

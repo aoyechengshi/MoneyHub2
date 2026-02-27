@@ -23,10 +23,10 @@
 .chart-area {
 	max-width: 900px;
 	margin: 24px auto;
-	background: var(--bg);
-	border-radius: var(--radius-xl);
+	background: #ffffff;
+	border-radius: var(--radius-xl, 18px);
 	padding: 30px;
-	border: 1px solid var(--border);
+	border: 1px solid #e2e8f0;
 	box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 }
 
@@ -40,6 +40,12 @@
 	max-width: 720px;
 	margin: 0 auto;
 }
+
+/* テーブルを確実に白背景に */
+table { background: #ffffff !important; color: #0f172a; }
+th    { background: #f8fafc !important; color: #64748b; }
+td    { background: #ffffff !important; color: #0f172a; }
+tr:hover td { background: #f8fafc !important; }
 </style>
 </head>
 

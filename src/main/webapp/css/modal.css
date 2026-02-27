@@ -268,14 +268,20 @@
 /* ── Table ── */
 .modal-content table {
 	width: 100%;
+	max-width: none;
 	border-collapse: collapse;
-	margin-top: 8px;
+	margin: 4px 0 12px;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	border: 1px solid var(--border);
+	box-shadow: none;
+	background: var(--bg);
 }
 
 .modal-content th,
 .modal-content td {
 	padding: 8px 10px;
-	border: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
 	text-align: left;
 	color: var(--text-primary);
 	font-size: 13px;
@@ -288,6 +294,11 @@
 	font-weight: 600;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
+	border-bottom: 1px solid var(--border-mid);
+}
+
+.modal-content tr:last-child td {
+	border-bottom: none;
 }
 
 .modal-content tr:hover td {

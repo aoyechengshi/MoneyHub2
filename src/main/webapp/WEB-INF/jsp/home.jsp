@@ -19,6 +19,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/modal.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/table.css">
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>

@@ -116,26 +116,43 @@ public class CategoryDAO {
 
 		try {
 			// 関連する expenses を削除
-			stmt = con.prepareStatement("DELETE FROM expenses WHERE category_id = ? AND user_id = ?");
-			stmt.setInt(1, categoryId);
-			stmt.setInt(2, userId);
-			stmt.executeUpdate();
-			stmt.close();
+			try {
+				stmt = con.prepareStatement("DELETE FROM expenses WHERE category_id = ? AND user_id = ?");
+				stmt.setInt(1, categoryId);
+				stmt.setInt(2, userId);
+				stmt.executeUpdate();
+				stmt.close();
+				stmt = null;
+			} catch (SQLException e) {
+				System.err.println("[DELETE expenses FAILED] " + e.getMessage());
+				if (stmt != null) { stmt.close(); stmt = null; }
+				throw new SQLException("expenses削除失敗: " + e.getMessage(), e);
+			}
 
 			// 関連する monthly_budget を削除
-			stmt = con.prepareStatement("DELETE FROM monthly_budget WHERE category_id = ? AND user_id = ?");
-			stmt.setInt(1, categoryId);
-			stmt.setInt(2, userId);
-			stmt.executeUpdate();
-			stmt.close();
+			try {
+				stmt = con.prepareStatement("DELETE FROM monthly_budget WHERE category_id = ?");
+				stmt.setInt(1, categoryId);
+				stmt.executeUpdate();
+				stmt.close();
+				stmt = null;
+			} catch (SQLException e) {
+				System.err.println("[DELETE monthly_budget FAILED] " + e.getMessage());
+				if (stmt != null) { stmt.close(); stmt = null; }
+				// monthly_budget削除失敗は警告に留め継続
+			}
 
 			// カテゴリ本体を削除
-			stmt = con.prepareStatement("DELETE FROM categories WHERE category_id = ? AND user_id = ?");
-			stmt.setInt(1, categoryId);
-			stmt.setInt(2, userId);
-			int rows = stmt.executeUpdate();
-
-			return rows > 0;
+			try {
+				stmt = con.prepareStatement("DELETE FROM categories WHERE category_id = ? AND user_id = ?");
+				stmt.setInt(1, categoryId);
+				stmt.setInt(2, userId);
+				int rows = stmt.executeUpdate();
+				return rows > 0;
+			} catch (SQLException e) {
+				System.err.println("[DELETE categories FAILED] " + e.getMessage());
+				throw new SQLException("categories削除失敗: " + e.getMessage(), e);
+			}
 
 		} finally {
 			if (stmt != null) {

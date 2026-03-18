@@ -25,7 +25,8 @@ public class DeleteFixedCategoryLogic {
 			}
 		} catch (SQLException e) {
 			//データベースエラーの場合
-			throw new UserSystemException("システムエラーが発生しました。管理者に連絡してください。");
+			e.printStackTrace();
+			throw new UserSystemException("SQL: " + e.getMessage());
 		} finally {
 			try {
 				if (con != null) {

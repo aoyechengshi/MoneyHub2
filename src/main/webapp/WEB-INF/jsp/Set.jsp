@@ -81,6 +81,7 @@
 									style="display: inline;">
 									<input type="hidden" name="categoryId"
 										value="${cat.categoryId}">
+									<input type="hidden" name="categoryType" value="fixedModal">
 									<button type="submit" name="buttonId" value="e013"
 										onclick="return confirm('この固定費を削除しますか？');">削除</button>
 								</form>
@@ -146,6 +147,7 @@
 									style="display: inline;">
 									<input type="hidden" name="categoryId"
 										value="${cat.categoryId}">
+									<input type="hidden" name="categoryType" value="variableModal">
 									<button type="submit" name="buttonId" value="e013"
 										onclick="return confirm('この変動費を削除しますか？');">削除</button>
 								</form>
@@ -233,6 +235,14 @@
 
 
 	<script>
+		// 削除後に自動でモーダルを再表示
+		window.onload = function() {
+			var openModal = '${openModal}';
+			if (openModal) {
+				document.getElementById(openModal).style.display = 'flex';
+			}
+		};
+
 		function openFixedModal() {
 			document.getElementById('fixedModal').style.display = 'flex';
 		}

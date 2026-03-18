@@ -21,7 +21,7 @@ public class DeleteFixedCategoryLogic {
 			CategoryDAO categoryDAO = new CategoryDAO(con);
 			result = categoryDAO.deleteFixedCategoryCategories(userId, categoryId);
 			if (result == false) {
-				throw new UserBusinessException("追加できませんでした。");
+				throw new UserBusinessException("削除できませんでした。");
 			}
 		} catch (SQLException e) {
 			//データベースエラーの場合

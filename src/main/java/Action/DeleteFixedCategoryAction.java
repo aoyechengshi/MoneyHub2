@@ -27,6 +27,7 @@ public class DeleteFixedCategoryAction implements ActionIF {
 			}
 
 			int userId = (Integer) session.getAttribute("userId");
+			System.out.println("[DeleteFixedCategoryAction] userId=" + userId + " categoryId=" + request.getParameter("categoryId"));
 			int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 			String categoryType = request.getParameter("categoryType");
 			String returnPage = request.getParameter("returnPage");

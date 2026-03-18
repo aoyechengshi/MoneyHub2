@@ -175,6 +175,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		</script>
 	</c:if>
+	<c:if test="${not empty errorMessage}">
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				alert('削除エラー: ${errorMessage}');
+			});
+		</script>
+	</c:if>
 	<script src="${pageContext.request.contextPath}/JS/Calender.js"></script>
 	<script src="${pageContext.request.contextPath}/JS/Modal.js"></script>
 	<script src="${pageContext.request.contextPath}/JS/SideBar.js"></script>

@@ -42,9 +42,14 @@ public class DeleteFixedCategoryAction implements ActionIF {
 			}
 
 		} catch (UserBusinessException e) {
-			request.setAttribute("errorMessage", e.getMessage());
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "UserBusinessException: " + e.getMessage());
 		} catch (UserSystemException e) {
-			request.setAttribute("errorMessage", e.getMessage());
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "UserSystemException: " + e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "Exception: " + e.getClass().getName() + ": " + e.getMessage());
 		}
 
 		// エラー時: returnPage に応じてデータをロードして返す

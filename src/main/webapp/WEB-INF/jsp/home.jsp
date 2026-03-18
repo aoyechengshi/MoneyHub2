@@ -167,8 +167,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
-	<c:if test="${not empty errorMessage}">
-		<script> window.onload = function() { openAnalysisModal(); }; </script>
+	<c:if test="${not empty openModal}">
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var el = document.getElementById('${openModal}');
+				if (el) el.style.display = 'flex';
+			});
+		</script>
 	</c:if>
 	<script src="${pageContext.request.contextPath}/JS/Calender.js"></script>
 	<script src="${pageContext.request.contextPath}/JS/Modal.js"></script>

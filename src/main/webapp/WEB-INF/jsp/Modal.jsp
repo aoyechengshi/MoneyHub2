@@ -27,6 +27,8 @@
 							<form method="post" action="/Kakeibo/UserFC"
 								style="display: inline;">
 								<input type="hidden" name="categoryId" value="${cat.categoryId}">
+								<input type="hidden" name="categoryType" value="fixedModal">
+								<input type="hidden" name="returnPage" value="home.jsp">
 								<button type="submit" name="buttonId" value="e013"
 									onclick="return confirm('この固定費を削除しますか？');">削除</button>
 							</form>
@@ -90,6 +92,8 @@
 							<form method="post" action="/Kakeibo/UserFC"
 								style="display: inline;">
 								<input type="hidden" name="categoryId" value="${cat.categoryId}">
+								<input type="hidden" name="categoryType" value="variableModal">
+								<input type="hidden" name="returnPage" value="home.jsp">
 								<button type="submit" name="buttonId" value="e013"
 									onclick="return confirm('この変動費を削除しますか？');">削除</button>
 							</form>
@@ -144,6 +148,7 @@
 								style="display: inline;">
 								<input type="hidden" name="incomeCategoryId"
 									value="${cat.incomeCategoryId}">
+								<input type="hidden" name="returnPage" value="home.jsp">
 								<button type="submit" name="buttonId" value="e016"
 									onclick="return confirm('この収入カテゴリを削除しますか？');">削除</button>
 							</form>

@@ -76,30 +76,30 @@ public class IncomeCategoryDAO {
 		return result;
 	}
 
-	//収入カテゴリ削除
+	//収入カテゴリ削除（関連する income を先に削除してから incometype を削除）
 	public boolean deleteIncomeCategory(int userId, String categoryId) throws SQLException {
-		String sql = "DELETE FROM incometype WHERE user_id=? AND categoryincome_id=? ";
 		PreparedStatement stmt = null;
-		boolean result = false;
 
 		try {
-			// PreparedStatement
-			stmt = con.prepareStatement(sql);
+			// 関連する income レコードを先に削除
+			stmt = con.prepareStatement("DELETE FROM income WHERE categoryincome_id = ? AND user_id = ?");
+			stmt.setString(1, categoryId);
+			stmt.setInt(2, userId);
+			stmt.executeUpdate();
+			stmt.close();
+
+			// カテゴリ本体を削除
+			stmt = con.prepareStatement("DELETE FROM incometype WHERE user_id = ? AND categoryincome_id = ?");
 			stmt.setInt(1, userId);
 			stmt.setString(2, categoryId);
 			int rows = stmt.executeUpdate();
 
-			if (rows > 0) {
-				result = true;
-			}
+			return rows > 0;
 
 		} finally {
-
 			if (stmt != null) {
 				stmt.close();
 			}
-
 		}
-		return result;
 	}
 }

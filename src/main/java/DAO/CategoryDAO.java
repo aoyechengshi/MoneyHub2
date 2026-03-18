@@ -110,28 +110,38 @@ public class CategoryDAO {
 		return result;
 	}
 
-	// カテゴリ削除
+	// カテゴリ削除（関連する expenses と monthly_budget を先に削除してから categories を削除）
 	public boolean deleteFixedCategoryCategories(int userId, int categoryId) throws SQLException {
-		String sql = "DELETE FROM categories WHERE category_id =? AND user_id =?";
 		PreparedStatement stmt = null;
-		boolean result = false;
 
 		try {
-			stmt = con.prepareStatement(sql);
-			stmt.setInt(1, categoryId); //
-			stmt.setInt(2, userId); //
+			// 関連する expenses を削除
+			stmt = con.prepareStatement("DELETE FROM expenses WHERE category_id = ? AND user_id = ?");
+			stmt.setInt(1, categoryId);
+			stmt.setInt(2, userId);
+			stmt.executeUpdate();
+			stmt.close();
+
+			// 関連する monthly_budget を削除
+			stmt = con.prepareStatement("DELETE FROM monthly_budget WHERE category_id = ? AND user_id = ?");
+			stmt.setInt(1, categoryId);
+			stmt.setInt(2, userId);
+			stmt.executeUpdate();
+			stmt.close();
+
+			// カテゴリ本体を削除
+			stmt = con.prepareStatement("DELETE FROM categories WHERE category_id = ? AND user_id = ?");
+			stmt.setInt(1, categoryId);
+			stmt.setInt(2, userId);
 			int rows = stmt.executeUpdate();
 
-			if (rows > 0) {
-				result = true;
-			}
+			return rows > 0;
 
 		} finally {
 			if (stmt != null) {
 				stmt.close();
 			}
 		}
-		return result;
 	}
 
 	// 変動費追加カテゴリ
